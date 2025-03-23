@@ -1,0 +1,491 @@
+<style>
+  .tag {
+      display: inline-block;
+      background-color: #e8e8e8;
+      color: black;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border:1px solid #ccc;
+      cursor: pointer;
+  }
+  .tag span {
+      margin-left: 10px;
+      cursor: pointer;
+  }
+</style>
+
+
+
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true"> 
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{{URL}}/painel">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao do Armamento</a></li>
+                                        <li class="breadcrumb-item active">Novo Levantamento</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Novo Levantamento</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                        <div class="row">
+                            <div class="card p-2 ">
+                                <h5 class="text-uppercase"><i class="mdi mdi-magnify me-1 font-18" ></i>
+                                    Digite o nome completo</h5>
+                                <div class="col-12">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nome completo</label>
+                                            <input type="text" class="form-control" data-provide="typeahead" id="prefetch" placeholder="Digite o nome completo">
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div> <!-- end col -->
+                            </div>
+                        </div> <!-- end row -->
+                        
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <!-- Avatar -->
+                                        <img id="avatar" src="resources/views/assets/images/users/usermilitary.png" alt="image" class="img-fluid avatar-xl">
+                        
+                                        <!-- Nome -->
+                                        <h4 id="funcionario-nome" class="mb-0 mt-2"><span id="patente" class="ms-2"></span> Nome completo</h4>
+                                        <p id="cargo" class="text-muted font-14">Funcao</p>
+                        
+                                        <div class="text-start mt-3">
+                                            <h4 class="font-13 text-uppercase">Sobre: </h4>
+                                            <p class="text-muted font-13 mb-3">
+                                                Este(a) e o(a)<strong><span id="patente1" class="ms-2"></span> <span id="full-name" class="ms-2"></span></strong>,
+                                                funcionario da Casa Militar afecto no Departamento de<strong><span id="departamento" class="ms-2"></span></strong> exercendo o a funcao de<span id="cargo1" class="ms-2"></span>. 
+                                            </p>
+                                            <p class="text-muted mb-2 font-13"><strong>Nome Completo:</strong><span id="full-name1" class="ms-2"></span></p>
+                                            <p class="text-muted mb-2 font-13"><strong>Genero:</strong><span id="gender" class="ms-2"></span></p>
+                                            <p class="text-muted mb-2 font-13"><strong>Patente:</strong><span id="patente2" class="ms-2"></span></p>
+                                            <p class="text-muted mb-1 font-13"><strong>Cargo:</strong><span id="cargo2" class="ms-2"></span></p>
+                                            <p class="text-muted mb-1 font-13"><strong>Departamento:</strong> <span id="departamento1" class="ms-2"></span></p>
+                                            <p class="text-muted mb-1 font-13"><strong>Documento:</strong> <span id="documento" class="ms-2"></span></p>
+                                        </div>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col-->
+
+
+
+
+                          <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body p-4">
+                                        <div class="text-center">
+                                            <i class="dripicons-wrong h1 text-warning"></i>
+                                            <h4 class="mt-2">Erro!</h4>
+                                            <p class="mt-3">Esta arma ja foi alocada a outro funcionario. Reveja o numero de serie da arma.</p>
+                                            <button type="button" class="btn btn-warning my-2" data-bs-dismiss="modal">Ok</button>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                        
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0 active">
+                                                    Levantamento
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                              <a href="#aboutme" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
+                                                  Historico
+                                              </a>
+                                          </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane" id="aboutme">
+    
+                                                <h5 class="text-uppercase"><i class="mdi mdi-alert me-1"></i>
+                                                    Observacoes Relevantes</h5>
+
+                                                <div class="timeline-alt pb-0">
+                                                    <div class="timeline-item">
+                                                        <i class="mdi mdi-circle bg-info-lighten text-info timeline-icon"></i>
+                                                        <div class="timeline-item-info">
+                                                            <h5 class="mt-0 mb-1">Lead designer / Developer</h5>
+                                                            <p class="font-14">websitename.com <span class="ms-2 font-12">Year: 2015 - 18</span></p>
+                                                            <p class="text-muted mt-2 mb-0 pb-3">Everyone realizes why a new common language
+                                                                would be desirable: one could refuse to pay expensive translators.
+                                                                To achieve this, it would be necessary to have uniform grammar,
+                                                                pronunciation and more common words.</p>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="timeline-item">
+                                                        <i class="mdi mdi-circle bg-primary-lighten text-primary timeline-icon"></i>
+                                                        <div class="timeline-item-info">
+                                                            <h5 class="mt-0 mb-1">Senior Graphic Designer</h5>
+                                                            <p class="font-14">Software Inc. <span class="ms-2 font-12">Year: 2012 - 15</span></p>
+                                                            <p class="text-muted mt-2 mb-0 pb-3">If several languages coalesce, the grammar
+                                                                of the resulting language is more simple and regular than that of
+                                                                the individual languages. The new common language will be more
+                                                                simple and regular than the existing European languages.</p>
+
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="timeline-item">
+                                                        <i class="mdi mdi-circle bg-info-lighten text-info timeline-icon"></i>
+                                                        <div class="timeline-item-info">
+                                                            <h5 class="mt-0 mb-1">Graphic Designer</h5>
+                                                            <p class="font-14">Coderthemes Design LLP <span class="ms-2 font-12">Year: 2010 - 12</span></p>
+                                                            <p class="text-muted mt-2 mb-0 pb-2">The European languages are members of
+                                                                the same family. Their separate existence is a myth. For science
+                                                                music sport etc, Europe uses the same vocabulary. The languages
+                                                                only differ in their grammar their pronunciation.</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- end timeline -->        
+
+                                                <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant me-1"></i>
+                                                    Projects</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-borderless table-nowrap mb-0">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Clients</th>
+                                                                <th>Project Name</th>
+                                                                <th>Start Date</th>
+                                                                <th>Due Date</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td><img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle" height="24"> Halette Boivin</td>
+                                                                <td>App design and development</td>
+                                                                <td>01/01/2015</td>
+                                                                <td>10/15/2018</td>
+                                                                <td><span class="badge badge-info-lighten">Work in Progress</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><img src="assets/images/users/avatar-3.jpg" alt="table-user" class="me-2 rounded-circle" height="24"> Durandana Jolicoeur</td>
+                                                                <td>Coffee detail page - Main Page</td>
+                                                                <td>21/07/2016</td>
+                                                                <td>12/05/2018</td>
+                                                                <td><span class="badge badge-danger-lighten">Pending</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><img src="assets/images/users/avatar-4.jpg" alt="table-user" class="me-2 rounded-circle" height="24"> Lucas Sabourin</td>
+                                                                <td>Poster illustation design</td>
+                                                                <td>18/03/2018</td>
+                                                                <td>28/09/2018</td>
+                                                                <td><span class="badge badge-success-lighten">Done</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><img src="assets/images/users/avatar-6.jpg" alt="table-user" class="me-2 rounded-circle" height="24"> Donatien Brunelle</td>
+                                                                <td>Drinking bottle graphics</td>
+                                                                <td>02/10/2017</td>
+                                                                <td>07/05/2018</td>
+                                                                <td><span class="badge badge-info-lighten">Work in Progress</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td><img src="assets/images/users/avatar-5.jpg" alt="table-user" class="me-2 rounded-circle" height="24"> Karel Auberjo</td>
+                                                                <td>Landing page design - Home</td>
+                                                                <td>17/01/2017</td>
+                                                                <td>25/05/2021</td>
+                                                                <td><span class="badge badge-warning-lighten">Coming soon</span></td>
+                                                            </tr>
+    
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+    
+                                            </div> <!-- end tab-pane -->
+                                            <!-- end about me section content -->
+                                            <div class="tab-pane show active" id="settings">
+                                                <form method="POST" enctype="multipart/form-data">
+                                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Dados Referentes ao Armamento</h5>
+                                                    <!-- Dados do fiador -->
+                                                    <input type="hidden" name="text_codigo" id="hiddenCodigo">
+                                                    <input type="hidden" name="text_patente" id="hiddenPatente">
+                                                    <input type="hidden" name="text_full_name" id="hiddenFullName">
+                                                    <input type="hidden" name="text_departamento" id="hiddenDepartamento">
+                                                    <input type="hidden" name="text_cargo" id="hiddenCargo">
+                                                    <input type="hidden" name="text_documento" id="hiddenDocumento">
+                                                    <input type="hidden" name="text_celular" id="hiddenCelular">
+                                                    <input type="hidden" name="text_celular_alt" id="hiddenCelularAlt">
+                                                    <input type="hidden" name="text_fotografia" id="hiddenFotografia">
+                                                    
+
+
+                                                    <!-- Dados do armamento -->
+                                                    <input type="hidden" name="text_codigo_armamento" id="text_hiddenArmamento">
+                                                    <input type="hidden" name="text_estado" id="hiddenEstado">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="firstname" class="form-label">Numero de Serie do Armamento</label>
+                                                                <input type="text" class="form-control"  name="text_numero_serie" data-provide="typeahead" id="prefetch_weapons" placeholder="Digite Numero de Serie">
+                                                                <span class="form-text text-muted"><small>Digite o numero de serie da arma</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="lastname" class="form-label">Tipo da Arma</label>
+                                                                <input type="text" class="form-control" name="text_tipo_arma" id="tipo_arma" readonly>
+                                                                <span class="form-text text-muted"><small>O tipo da arma selecionada</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="firstname" class="form-label">Estado da Arma</label>
+                                                                <input type="text" class="form-control" name="text_estado_arma" id="estado_Arma" readonly>
+                                                                <span class="form-text text-muted"><small>Estado referente a arma selecionada</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="lastname" class="form-label">Calibre da Municao da Arma</label>
+                                                                <input type="text" class="form-control" name="text_calibre_municao" id="municao" readonly>
+                                                                <span class="form-text text-muted"><small>Calibre da Municao compativel com a arma</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                            
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label for="userbio" class="form-label">Data da ultima Inspencao</label>
+                                                                <input type="text" class="form-control" name="text_data_inspencao" id="data_inspencao" readonly>
+                                                                <span class="form-text text-muted"><small>Ultima vez que a arma foi inspencionada</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                            
+                                                    <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-bullseye me-1"></i> Municoes</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="companyname" class="form-label">Municao a Retirar</label>
+                                                                <select name="text_municao_retirar" class="form-select" id="example-select">
+                                                                    <option>Selecione a Municao</option>
+                                                                    {{municaoItem}}
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Nome da munição (ex: 9mm, .223 Remington).</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="cwebsite" class="form-label">Quantidade</label>
+                                                                <input type="number" name="text_municao_quantidade" class="form-control" id="cwebsite" placeholder="quantidade">
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                            
+                                                    <!--<h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-shape-plus me-1"></i> Equipamentos</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="social-fb" class="form-label">Selecione o(os) Equipamentos</label>
+                                                                <div class="input-group">
+                                                                    <select class="select2 form-control select2-multiple" name="text_equipamentos[]" data-toggle="select2" multiple="multiple" data-placeholder="Selecione...">
+                                                                        <optgroup label="Equipamentos">
+                                                                            {{equipmentItem}}
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                          <div class="mb-3">
+                                                              <label for="tagsinput" class="form-label">Quantidades por equipamentos</label>
+                                                              <div class="input-group">
+                                                                  <input type="text" id="tagsinput" class="form-control" placeholder="Adicione quantidades...">
+                                                              </div>
+                                                              <div id="tags-container"></div>
+                                                               Campo oculto para armazenar as tags como um array 
+                                                              <input type="hidden" id="tags" name="text_quantidades_equipamentos">
+                                                          </div>
+                                                      </div>
+                                                    </div> end row -->
+
+                              
+                                                    <div class="mb-3">
+                                                        <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-pen me-1"></i> Assinaturas</h5>
+                                                        <div class="row">
+                                                          <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                              <label for="social-fb" class="form-label">Assinatura do Fiador</label>
+                                                              <div>
+                                                                <div id="signatureDiv">
+                                                                  <img id="signatureImage" src="#" />
+                                                                  <input type="file" name="signature_image" id="signatureFile" accept="image/*" class="form-control" hidden>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>                                                          
+                                                          <div class="col-md-6">
+                                                              <div class="mb-3">
+                                                                  <label for="social-tw" class="form-label">Dispositivo de assinatura</label>
+                                                                  <div class="mb-3">
+                                                                    <div>
+                                                                      <button type="button" id="signButton" onClick="tabletDemo()" class="btn btn-outline-primary">Assinar</button>
+                                                                  </div>
+                                                              </div>
+                                                          </div> <!-- end col -->
+                                                      </div> <!-- end row -->
+                                                        
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div> <!-- end tab-content -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row-->
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.weaponsWithdraw.js"></script>
+    <script src="resources/views/assets/js/pages/demo.weaponsApi.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+     <!-- Timepicker -->
+     <script src="resources/views/assets/js/pages/demo.timepicker.js"></script>
+
+     <!-- Wacom Connector-->
+     <script src="resources/views/assets/js/wacomConnector.js"></script>
+
+     <script>
+      // Função para verificar a URL e abrir o modal
+          window.onload = function() {
+              // Verificar se o parâmetro "showModal=true" está presente na URL
+              const urlParams = new URLSearchParams(window.location.search);
+              if (urlParams.has('status') && urlParams.get('status') === 'error_serie') {
+                  // Abrir o modal se a condição for verdadeira
+                  var myModal = new bootstrap.Modal(document.getElementById('warning-alert-modal'));
+                  myModal.show();
+              }
+          }
+     </script>
+
+     <script>
+      // Elementos do DOM
+      const input = document.getElementById('tagsinput');
+      const tagsContainer = document.getElementById('tags-container');
+      const tagsInput = document.getElementById('tags');  // Campo oculto para armazenar as tags
+
+      // Array para armazenar as tags
+      let tags = [];
+
+      // Função para adicionar a tag
+      function addTag(tagText) {
+          const tag = document.createElement('div');
+          tag.classList.add('tag');
+          tag.innerHTML = `${tagText} <span onclick="removeTag(this)">x</span>`;  // Adiciona "x" para remover a tag
+          tagsContainer.appendChild(tag);
+
+          // Adiciona a tag ao array
+          tags.push(tagText);
+
+          // Atualiza o campo oculto com as tags em formato de array
+          updateTagsInput();
+      }
+
+      // Função para remover a tag
+      function removeTag(tagElement) {
+          const tagText = tagElement.parentElement.textContent.replace(' x', '');
+          tags = tags.filter(tag => tag !== tagText); // Remove a tag do array
+
+          tagElement.parentElement.remove();  // Remove o elemento visualmente
+
+          // Atualiza o campo oculto com as tags em formato de array
+          updateTagsInput();
+      }
+
+      // Função para atualizar o campo oculto com o array de tags
+      function updateTagsInput() {
+          tagsInput.value = JSON.stringify(tags);  // Armazena o array no campo oculto como string JSON
+      }
+
+      // Adicionar tag ao pressionar vírgula
+      input.addEventListener('keydown', function(event) {
+          if (event.key === ',' && input.value.trim() !== '') {
+              addTag(input.value.trim());
+              input.value = ''; // Limpa o campo de input
+              event.preventDefault(); // Previne que a vírgula seja inserida no input
+          }
+      });
+    </script>
+
+</body>

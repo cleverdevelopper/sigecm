@@ -1,0 +1,136 @@
+
+    <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+        <!-- Begin page -->
+        <div class="wrapper">
+            <!-- ========== Left Sidebar Start ========== -->
+            {{sidebar}}
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Topbar Start -->
+                    {{navbar}}
+                    <!-- end Topbar -->
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                            <li class="breadcrumb-item active">Editors</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Editors</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div class="mb-2">
+                                                <h4 class="header-title mt-2">Gerador de Relatorio</h4>
+                                                <p class="text-muted font-14">Digite aspectos importantes do seu relatorio abaixo.</p>
+
+                                                <ul class="nav nav-tabs nav-bordered mb-3">
+                                                    <li class="nav-item">
+                                                        <a href="#hint-emoji-preview" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                            Digitar relatorio
+                                                        </a>
+                                                    </li>
+                                                </ul> <!-- end nav-->
+                                                <div class="tab-content">
+                                                    <form id="editor-form" method="POST">
+                                                        <div class="tab-pane show active" id="hint-emoji-preview">
+                                                            <div id="snow-editor" style="height: 300px;">
+                                                                <input type="hidden" name="conteudo" id="conteudo">
+                                                                
+                                                            </div><!-- end Snow-editor-->
+                                                        </div> <!-- end preview-->
+                                                        <div class="text-end">
+                                                            <button type="submit" class="btn btn-success mt-2"><i
+                                                                    class="mdi mdi-content-save"></i> Salvar</button>
+                                                        </div>
+                                                    </form>
+                                                </div> <!-- end tab-content-->
+
+                                            </div>
+                                        </li>
+                                    </ul> <!-- end list-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- end row -->
+                        
+                        <!-- end row -->
+                        <!-- end row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                {{footer}}
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Right Sidebar -->
+        {{rightsidebar}}
+
+        <div class="rightbar-overlay"></div>
+        <!-- /End-bar -->
+
+
+        <!-- bundle -->
+        <script src="resources/views/assets/js/vendor.min.js"></script>
+        <script src="resources/views/assets/js/app.min.js"></script>
+        <!-- quill js -->
+        <script src="resources/views/assets/js/vendor/quill.min.js"></script>
+        <!-- Init js-->
+        <script src="resources/views/assets/js/pages/demo.quilljs.js"></script>
+
+        <!-- SimpleMDE js -->
+        <script src="resources/views/assets/js/vendor/simplemde.min.js"></script>
+
+        <!-- SimpleMDE demo -->
+        <script src="resources/views/assets/js/pages/demo.simplemde.js"></script>
+
+    </body>
+

@@ -1,0 +1,32 @@
+<tr>
+    <td>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="customCheck2">
+            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+        </div>
+    </td>
+    <td class="table-user">
+        <a href="javascript:void(0);" class="text-body fw-semibold">{{codigo}}</a>
+    </td>
+    <td>
+        {{nome_completo}}
+    </td>
+    <td>
+        {{data_entrada}}
+    </td>
+    <td>
+        {{sector}}
+    </td>
+    <td>
+        <form action="" method="POST">
+            <input hidden type="text" name="text_codigo" value="{{codigo}}">
+            <button type="submit" class="btn btn-outline-success btn-sm"><i class="mdi mdi-logout"></i> Saida</button>
+        </form>
+    </td>
+    <td>
+        {{pessoa}}
+    </td>
+    <td>
+        {{processor}}
+    </td>
+</tr>

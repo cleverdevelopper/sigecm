@@ -1,0 +1,515 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao do Armamento</a></li>
+                                        <li class="breadcrumb-item active">Novo Equipamento</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Novo Equipamento</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                    class="nav-link rounded-0 active">
+                                                    REGISTAR NOVO EQUIPAMENTO
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="settings">
+                                                    <h5 class="mb-4 text-uppercase"><i
+                                                            class="mdi mdi-account-circle me-1"></i> Dados importantes do Equipamento
+                                                    </h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Tipo do equipamento</label>
+                                                                <select name="text_tipo_equipamento" class="form-select" id="tipo_equipamento">
+                                                                    <option value="">Selecione o Tipo de Equipamento</option>
+                                                                    <option value="Proteção pessoal">Proteção Pessoal</option>
+                                                                    <option value="Armazenamento e transporte">Armazenamento e Transporte</option>
+                                                                    <option value="Armamento">Armamento</option>
+                                                                    <option value="Suporte e logística">Suporte e Logística</option>
+                                                                    <option value="Treinamento">Treinamento</option>
+                                                                    <option value="Defesa e ataque">Defesa e Ataque</option>
+                                                                    <option value="Equipamento auxiliar">Equipamento Auxiliar</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Os diferentes tipos de equipamentos que podem ser cadastrados.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">O equipamento</label>
+                                                                <select name="text_nome_equipamento" class="form-select" id="nome_equipamento">
+                                                                    <option value="">Selecione o Equipamento</option>
+                                                                
+                                                                    <!-- Proteção Pessoal -->
+                                                                    <optgroup label="Proteção Pessoal">
+                                                                        <option value="Capacete balistico">Capacete Balístico</option>
+                                                                        <option value="Colete a prova de balas">Colete à prova de balas</option>
+                                                                        <option value="Mascara de gas">Máscara de gás</option>
+                                                                        <option value="Oculos balistico">Óculos balísticos</option>
+                                                                        <option value="Protetores de ouvido">Protetores de ouvido</option>
+                                                                        <option value="Luvas taticas">Luvas táticas</option>
+                                                                        <option value="Botas taticas">Botas táticas</option>
+                                                                        <option value="Protetores faciais">Protetores faciais</option>
+                                                                        <option value="Colete de carga">Colete de carga</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Armazenamento e Transporte -->
+                                                                    <optgroup label="Armazenamento e Transporte">
+                                                                        <option value="Carregador">Carregador</option>
+                                                                        <option value="Cartucheira">Cartucheira</option>
+                                                                        <option value="Bolsas de municao">Bolsas de munição</option>
+                                                                        <option value="Cinto de municao">Cinto de munição</option>
+                                                                        <option value="Bolsas taticas">Bolsas táticas</option>
+                                                                        <option value="Caixa de municao">Caixa de munição</option>
+                                                                        <option value="Pochetes taticas">Pochetes táticas</option>
+                                                                        <option value="Mochila de hidratacao">Mochila de hidratação</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Armamento -->
+                                                                    <optgroup label="Armamento">
+                                                                        <option value="Suporte para arma">Suporte para arma (bipé, trípode)</option>
+                                                                        <option value="Silenciador">Silenciador</option>
+                                                                        <option value="Lentes de mira">Lentes de mira</option>
+                                                                        <option value="Luzes taticas">Luzes táticas</option>
+                                                                        <option value="Lunetas de mira">Lunetas de mira</option>
+                                                                        <option value="Miras holograficas">Miras holográficas</option>
+                                                                        <option value="Lanterna tatica">Lanterna tática</option>
+                                                                        <option value="Capacete com montagem para mira">Capacete com montagem para mira</option>
+                                                                    </optgroup>
+                                                                    <!-- Suporte e Logística -->
+                                                                    <optgroup label="Suporte e Logística">
+                                                                        <option value="Gerador portatil">Gerador portátil</option>
+                                                                        <option value="Kit de primeiros socorros">Kit de primeiros socorros</option>
+                                                                        <option value="Ferramentas multiuso">Ferramentas multiuso</option>
+                                                                        <option value="Corda tatica">Corda tática</option>
+                                                                        <option value="Pas e machados">Pás e machados</option>
+                                                                        <option value="Barracas de campanha">Barracas de campanha</option>
+                                                                        <option value="Fogareiro tatico">Fogareiro tático</option>
+                                                                        <option value="Filtro de agua portatil">Filtro de água portátil</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Treinamento -->
+                                                                    <optgroup label="Treinamento">
+                                                                        <option value="Alvo de treino">Alvo de treino</option>
+                                                                        <option value="Proteção para treino">Proteção para treino</option>
+                                                                        <option value="Simulador de tiro">Simuladores de tiro</option>
+                                                                        <option value="Colete de treino">Coletes de treino</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Defesa e Ataque -->
+                                                                    <optgroup label="Defesa e Ataque">
+                                                                        <option value="Escudo balistico">Escudo balístico</option>
+                                                                        <option value="Armadura de protecao">Armadura de proteção</option>
+                                                                        <option value="Granada de treino">Granada de treino</option>
+                                                                        <option value="Rpg">RPG (Lança-rojões)</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Equipamento Auxiliar -->
+                                                                    <optgroup label="Equipamento Auxiliar">
+                                                                        <option value="Kit de sobrevivencia">Kit de sobrevivência</option>
+                                                                        <option value="Oculos de visao noturna">Óculos de visão noturna</option>
+                                                                        <option value="Mascara de oxigenio">Máscara de oxigênio</option>
+                                                                        <option value="Arco e flecha taticos">Arco e flecha táticos</option>
+                                                                        <option value="Drone de vigilancia">Drone de vigilância</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                                                                                               
+                                                                <span class="form-text text-muted"><small>Tipo de equipamentos e sua classificacao.</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Material de Fabricação</label>
+                                                                <select name="text_material_fabricacao" class="form-select">
+                                                                    <option value="">Selecione o Material de Fabricação</option>
+                                                                    <option value="Kevlar">Kevlar</option>
+                                                                    <option value="Aco">Aço</option>
+                                                                    <option value="Aluminio">Alumínio</option>
+                                                                    <option value="Plastico">Plástico</option>
+                                                                    <option value="Fibra de vidro">Fibra de Vidro</option>
+                                                                    <option value="Polietileno">Polietileno</option>
+                                                                    <option value="Titaneo">Titânio</option>
+                                                                    <option value="Couro">Couro</option>
+                                                                    <option value="Borracha">Borracha</option>
+                                                                    <option value="Composite">Composto</option>
+                                                                    <option value="Nylon">Nylon</option>
+                                                                    <option value="Ceramica">Cerâmica</option>
+                                                                    <option value="Carbono">Fibra de Carbono</option>
+                                                                    <option value="Cobre">Cobre</option>
+                                                                    <option value="Fibra de carvao">Fibra de Carvão</option>
+                                                                    <option value="Madeira">Madeira</option>
+                                                                    <option value="Vidro temperado">Vidro Temperado</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Material do que e feito.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Capacidade de Carga ou Proteção</label>
+                                                                <select name="capacidade_carga_protecao" class="form-select" id="capacidade_carga_protecao">
+                                                                    <option value="">Selecione a Capacidade de Carga ou Proteção</option>
+                                                                
+                                                                    <!-- Para equipamentos de proteção, como coletes, capacetes, etc. -->
+                                                                    <optgroup label="Equipamentos de Proteção">
+                                                                        <option value="Nivel ii (Proteção contra pistolas de baixo calibre)">Nível II (Proteção contra pistolas de baixo calibre)</option>
+                                                                        <option value="Nivel iii-a (Proteção contra pistolas de alto calibre e alguns rifles de baixo poder)">Nível III-A (Proteção contra pistolas de alto calibre e alguns rifles de baixo poder)</option>
+                                                                        <option value="Nivel iii (Proteção contra rifles de calibres comuns, como 7,62mm NATO)">Nível III (Proteção contra rifles de calibres comuns, como 7,62mm NATO)</option>
+                                                                        <option value="Nivel iv (Proteção contra munição perfurante de blindagem)">Nível IV (Proteção contra munição perfurante de blindagem)</option>
+                                                                        <option value="Capacete balistico anti-frag (Resistência a fragmentos e impactos)">Capacete balístico (anti-frag) - Resistência a fragmentos e impactos</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Para equipamentos de armazenamento ou transporte, como cartucheiras, mochilas táticas, etc. -->
+                                                                    <optgroup label="Equipamentos de Armazenamento/Transporte">
+                                                                        <option value="Capacidade 10 cartuchos">Capacidade de 10 cartuchos</option>
+                                                                        <option value="Capacidade 20 cartuchos">Capacidade de 20 cartuchos</option>
+                                                                        <option value="Capacidade 30 cartuchos">Capacidade de 30 cartuchos</option>
+                                                                        <option value="Capacidade 50 cartuchos">Capacidade de 50 cartuchos</option>
+                                                                        <option value="Capacidade 100 cartuchos">Capacidade de 100 cartuchos</option>
+                                                                        <option value="Capacidade 200 cartuchos">Capacidade de 200 cartuchos</option>
+                                                                        <option value="Capacidade 500 cartuchos">Capacidade de 500 cartuchos</option>
+                                                                        <option value="Capacidade 100 litros">Capacidade de 100 litros (para mochilas táticas grandes)</option>
+                                                                        <option value="Capacidade 200 litros">Capacidade de 200 litros (para grandes bolsas de transporte)</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Para armas com capacidade específica, como rifles, pistolas e outros -->
+                                                                    <optgroup label="Armas e Munições">
+                                                                        <option value="Capacidade 1 cartucho">Capacidade de 1 cartucho (ex: pistolas de ação simples)</option>
+                                                                        <option value="Capacidade 2 cartuchos">Capacidade de 2 cartuchos (ex: revólveres de 2 tiros)</option>
+                                                                        <option value="Capacidade 6 cartuchos">Capacidade de 6 cartuchos (revólver padrão)</option>
+                                                                        <option value="Capacidade 10 cartuchos fuzil">Capacidade de 10 cartuchos (fuzis de carga rápida)</option>
+                                                                        <option value="Capacidade 20 cartuchos fuzil">Capacidade de 20 cartuchos (fuzis semiautomáticos)</option>
+                                                                        <option value="Capacidade 30 cartuchos fuzil">Capacidade de 30 cartuchos (fuzis de assalto)</option>
+                                                                        <option value="Capacidade 100 cartuchos metralhadora">Capacidade de 100 cartuchos (metralhadora de alta capacidade)</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                                
+                                                                <span class="form-text text-muted"><small>Capacidade de carga ou proteção (ex: número de cartuchos ou grau de proteção).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Peso do Equipamento</label>
+                                                                <input type="text" class="form-control" name="text_peso" placeholder="Digite o peso do equipamento" >                                                              
+                                                                <span class="form-text text-muted"><small>Peso em kg do equipamento.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Cor do equipamento</label>
+                                                                <select name="text_cor_equipamento" class="form-select" id="cor_equipamento">
+                                                                    <option value="">Selecione a Cor do Equipamento</option>
+                                                                
+                                                                    <option value="Preto">Preto</option>
+                                                                    <option value="Verde oliva">Verde Oliva</option>
+                                                                    <option value="Camuflado">Camuflado</option>
+                                                                    <option value="Azul militar">Azul Militar</option>
+                                                                    <option value="Areia">Areia (Bege, Desert)</option>
+                                                                    <option value="Cinza">Cinza</option>
+                                                                    <option value="Branco">Branco</option>
+                                                                    <option value="Vermelho">Vermelho</option>
+                                                                    <option value="Amarelo">Amarelo</option>
+                                                                    <option value="Laranja">Laranja</option>
+                                                                    <option value="Verde militar">Verde Militar</option>
+                                                                    <option value="Marrom">Marrom</option>
+                                                                    <option value="Poxo">Roxo</option>
+                                                                    <option value="Prata">Prata</option>
+                                                                    <option value="Dourado">Dourado</option>
+                                                                    <option value="Azul">Azul</option>
+                                                                    <option value="Verde fosco">Verde Fosco</option>
+                                                                    <option value="Camuflagem temporal">Camuflagem Temporal (ex: de inverno ou florestal)</option>
+                                                                    <option value="Camuflagem tatica">Camuflagem Tática (ex: camuflagem digital)</option>
+                                                                </select>
+                                                                                                                               
+                                                                <span class="form-text text-muted"><small>Cor do equipamento.</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Compatibilidade</label>
+                                                                <select name="text_compatibilidade" class="form-select" id="compatibilidade">
+                                                                    <option value="">Selecione a Compatibilidade</option>
+                                                                
+                                                                    <!-- Compatibilidade com tipos de armamento -->
+                                                                    <optgroup label="Compatibilidade com Armamento">
+                                                                        <option value="Compativel com fuzil">Compatível com Fuzil</option>
+                                                                        <option value="Compativel com pistola">Compatível com Pistola</option>
+                                                                        <option value="Compativel com metralhadora">Compatível com Metralhadora</option>
+                                                                        <option value="Compativel com espingarda">Compatível com Espingarda</option>
+                                                                        <option value="Compativel com rifle">Compatível com Rifle</option>
+                                                                        <option value="Compativel com revólver">Compatível com Revólver</option>
+                                                                        <option value="Compativel com lanca foguetes">Compatível com Lança-Foguetes</option>
+                                                                        <option value="Compativel com missel">Compatível com Míssil</option>
+                                                                        <option value="Compativel com granada">Compatível com Granada</option>
+                                                                        <option value="Compativel com armas quimicas">Compatível com Armas Químicas</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Compatibilidade com tipos de munição -->
+                                                                    <optgroup label="Compatibilidade com Munição">
+                                                                        <option value="Compativel com 9mm">Compatível com 9mm</option>
+                                                                        <option value="Compativel com 556mm">Compatível com 5.56mm</option>
+                                                                        <option value="Compativel com 762mm">Compatível com 7.62mm</option>
+                                                                        <option value="Compativel com 308win">Compatível com .308 Winchester</option>
+                                                                        <option value="Compativel com 223rem">Compatível com .223 Remington</option>
+                                                                        <option value="Compativel com 40sw">Compatível com .40 S&W</option>
+                                                                        <option value="Compativel com 45acp">Compatível com .45 ACP</option>
+                                                                        <option value="Compativel com 12gauge">Compatí el com 12 Gauge</option>
+                                                                        <option value="Compativel com 20gauge">Compatível com 20 Gauge</option>
+                                                                        <option value="Compativel com 155mm">Compatível com 155mm (Artilharia)</option>
+                                                                        <option value="Compativel com 50bmg">Compatível com .50 BMG</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Compatibilidade com acessórios -->
+                                                                    <optgroup label="Compatibilidade com Acessórios">
+                                                                        <option value="Compativel com carregador">Compatível com Carregador</option>
+                                                                        <option value="Compativel com cartucheira">Compatível com Cartucheira</option>
+                                                                        <option value="Compativel com mochila tatica">Compatível com Mochila Tática</option>
+                                                                        <option value="Compativel com luminaria">Compatível com Luminária</option>
+                                                                        <option value="Compativel com capacete balistico">Compatível com Capacete Balístico</option>
+                                                                        <option value="Compativel com colete balistico">Compatível com Colete Balístico</option>
+                                                                        <option value="Compativel com mira optica">Compatível com Mira Óptica</option>
+                                                                        <option value="Compativel com silenciador">Compatível com Silenciador</option>
+                                                                        <option value="Compativel com lanca granadas">Compatível com Lança-Granadas</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                                                                                                                                                              
+                                                                <span class="font-13 text-muted">Compatibilidade do equipamento com armamentos.</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Finalidade</label>
+                                                                <select name="text_finalidade" class="form-select" id="finalidade">
+                                                                    <option value="">Selecione a Finalidade</option>
+                                                                
+                                                                    <!-- Finalidade de armamento -->
+                                                                    <optgroup label="Finalidade de Armamento">
+                                                                        <option value="Defesa pessoal">Defesa Pessoal</option>
+                                                                        <option value="Controle disturbios">Controle de Distúrbios</option>
+                                                                        <option value="Combate distante">Combate a Longa Distância</option>
+                                                                        <option value="Combate proximo">Combate a Curta Distância</option>
+                                                                        <option value="Neutralizacao veiculos">Neutralização de Veículos</option>
+                                                                        <option value="Neutralizacao pessoal">Neutralização de Pessoal</option>
+                                                                        <option value="Destruir bunkers">Destruição de Bunkers</option>
+                                                                        <option value="Destruir instalacoes">Destruição de Instalações</option>
+                                                                        <option value="Defesa territorial">Defesa Territorial</option>
+                                                                        <option value="Atacar posicoes">Ataque a Posições Fortificadas</option>
+                                                                        <option value="Desativacao">Desativação de Explosivos</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Finalidade de equipamentos de proteção -->
+                                                                    <optgroup label="Finalidade dD Equipamentos de Proteção">
+                                                                        <option value="Protecao pessoal">Proteção Pessoal</option>
+                                                                        <option value="Protecao coletiva">Proteção Coletiva</option>
+                                                                        <option value="Protecao impactos">Proteção Contra Impactos</option>
+                                                                        <option value="Protecao quimica">Proteção Química</option>
+                                                                        <option value="Protecao biologica">Proteção Biológica</option>
+                                                                        <option value="Protecao radioativa">Proteção Contra Radiação</option>
+                                                                        <option value="Camuflagem">Camuflagem</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Finalidade de equipamentos de transporte -->
+                                                                    <optgroup label="Finalidade de Equipamentos de Transporte">
+                                                                        <option value="Transporte municao">Transporte de Munição</option>
+                                                                        <option value="Transporte equipamento">Transporte de Equipamentos</option>
+                                                                        <option value="Transporte kit primeiros socorros">Transporte de Kit de Primeiros Socorros</option>
+                                                                        <option value="Transporte material explosivo">Transporte de Material Explosivo</option>
+                                                                        <option value="Transporte pessoal">Transporte de Pessoal</option>
+                                                                    </optgroup>
+                                                                
+                                                                    <!-- Finalidade de acessórios -->
+                                                                    <optgroup label="Finalidade de Acessórios">
+                                                                        <option value="Ampliar precisao">Ampliar Precisão</option>
+                                                                        <option value="Aumentar visibilidade">Aumentar Visibilidade</option>
+                                                                        <option value="Mira telemetrica">Mira Telemetrica</option>
+                                                                        <option value="Mira infravermelha">Mira Infravermelha</option>
+                                                                        <option value="Mira nocturna">Mira Noturna</option>
+                                                                        <option value="Aumentar alcance">Aumentar Alcance</option>
+                                                                        <option value="Reduzir som">Reduzir Som (Silenciador)</option>
+                                                                        <option value="Protecao extra">Proteção Extra (ex: Coletes, Capacetes)</option>
+                                                                    </optgroup>
+                                                                </select>                                                                                                                              
+                                                                <span class="font-13 text-muted">Finalidade do Equipamento.</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                       
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Pais de Origem</label>
+                                                                <select name="text_pais_origem" class="form-select" id="pais_origem">
+                                                                    <option value="">Selecione o País de Origem</option>
+                                                                    <option value="eua">Estados Unidos</option>
+                                                                    <option value="russia">Rússia</option>
+                                                                    <option value="china">China</option>
+                                                                    <option value="alemanha">Alemanha</option>
+                                                                    <option value="franca">França</option>
+                                                                    <option value="inglaterra">Reino Unido</option>
+                                                                    <option value="israel">Israel</option>
+                                                                    <option value="india">Índia</option>
+                                                                    <option value="brasil">Brasil</option>
+                                                                    <option value="italia">Itália</option>
+                                                                    <option value="suica">Suíça</option>
+                                                                    <option value="japao">Japão</option>
+                                                                    <option value="suecia">Suécia</option>
+                                                                    <option value="coreia do sul">Coreia do Sul</option>
+                                                                    <option value="turquia">Turquia</option>
+                                                                    <option value="africa do sul">África do Sul</option>
+                                                                    <option value="argentina">Argentina</option>
+                                                                    <option value="paises baixos">Países Baixos</option>
+                                                                    <option value="espanha">Espanha</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>País de origem do armamento (ex: EUA, Rússia, China).</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Fabricante</label>
+                                                                <input type="text" class="form-control" name="text_fabricante" placeholder="Digite o fabricante do equipamento" >                                                              
+                                                                <span class="form-text text-muted"><small>Fabricante do equipamento.</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->  
+
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Estado do Equipamento</label>
+                                                                <select name="text_estado_equipamento" class="form-select" id="estado_equipamento">
+                                                                    <option value="">Selecione o Estado do Equipamento</option>
+                                                                    <!-- Estados do Equipamento -->
+                                                                    <optgroup label="Estado do Equipamento">
+                                                                        <option value="Novo">Novo</option>
+                                                                        <option value="Usado">Usado</option>
+                                                                        <option value="Recondicionado">Recondicionado</option>
+                                                                        <option value="Danificado">Danificado</option>
+                                                                        <option value="Inoperante">Inoperante</option>
+                                                                        <option value="Em maintenance">Em Manutenção</option>
+                                                                        <option value="Funcional">Funcional</option>
+                                                                        <option value="Defeito">Com Defeito</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                                                                                               
+                                                                <span class="form-text text-muted"><small>País de origem do Equipamento (ex: EUA, Rússia, China).</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3 position-relative" id="datepicker1">
+                                                                <label class="form-label">Data de Fabricacao</label>
+                                                                <input type="text" name="text_data_fabricacao" class="form-control" data-provide="datepicker" data-date-container="#datepicker1">
+                                                                <span class="form-text text-muted"><small>Data de fabricação do Equipamento.</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3 position-relative" id="datepicker1">
+                                                                <label class="form-label">Quantidade</label>
+                                                                <input type="text" name="text_quantidade" class="form-control" placeholder="Digite a Quantidade do Equipamento">
+                                                                <span class="form-text text-muted"><small>Quantidade do equipamento</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label for="userbio" class="form-label">Descrição</label>
+                                                                <textarea class="form-control" id="userbio" rows="4"
+                                                                    name="text_descricao" placeholder="Descreva algumas informacoes adicionais sobre o tipo de arma..."></textarea>
+                                                                <span class="form-text text-muted"><small>Descrição detalhada do tipo de Equipamento.</small></span>    
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->  
+                                                    <h5 class="mb-3  bg-light p-2"><i
+                                                            class="mdi mdi-office-building me-1"></i> INFO: Depois de
+                                                        verificadas as Informacoes clique em salvar</h5>
+                                                    <div class="col-12 text-center">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                            </div>
+                                            <!-- end settings content-->
+                                        </div> <!-- end tab-content -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                    </form>
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.typehead.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+</body>

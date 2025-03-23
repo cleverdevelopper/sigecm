@@ -1,0 +1,429 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao Visitantes</a>
+                                        </li>
+                                        <li class="breadcrumb-item active">Registar Entrada</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Registar Entrada</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <!---
+                        #===============================================
+                        # Modal que faz a captura de imagem
+                        #===============================================
+                    -->
+
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="modal-pages-preview">
+                            <!-- Signup modal content -->
+                            <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Name</label>
+                                                <div id="my_camera"></div>
+                                            </div>
+                                            <div class="mb-3 text-center">
+                                                <button id="capture-btn" class="btn btn-primary" onclick="startCapture()">Capturar</button>
+
+                                                <!-- Botão de carregando (ficará visível após o clique no botão de capturar) -->
+                                                <button id="loading-btn" class="btn btn-primary" type="button" style="display: none;" disabled>
+                                                    <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                                                    Buscando...
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </div> <!-- end preview-->
+                    </div> <!-- end tab-content-->
+
+                    <!---
+                        #===============================================
+                        # Fim Modal que faz a captura de imagem
+                        #===============================================
+                    -->
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div id="results">
+                                            <img src="resources/views/assets/images/user.webp" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                                        </div>
+                                        <h4 class="mb-0 mt-2" id="name_guest">Tirar uma foto</h4>
+                                        <p class="text-muted font-14" id="rec_certeza">Visitante</p>
+
+                                        <div class="button-list">
+                                            <!-- Sign Up modal -->
+                                            <button type="button" class="btn btn-success btn-sm mb-2" data-bs-toggle="modal"
+                                                data-bs-target="#signup-modal">Capturar uma foto</button>
+                                        </div>
+                                        <!-- File input to handle uploaded image -->
+                                        <div class="mb-3">
+                                            <input type="file" hidden class="form-control" id="image-upload" name="imagem" accept="image/*">
+                                        </div>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col-->
+
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                    class="nav-link rounded-0 active">
+                                                    REGISTAR ENTRADA
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="settings">
+                                                    <h5 class="mb-4 text-uppercase"><i
+                                                            class="mdi mdi-account-circle me-1"></i> Informacoes Pessoais
+                                                    </h5>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label for="firstname" class="form-label">Nome Completo</label>
+                                                                <input type="text" class="form-control" id="firstname"
+                                                                    name="text_nomecompleto" placeholder="Digite nome e sobrenome" required>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Quem vai
+                                                                    visitar</label>
+                                                                <input type="text" class="form-control" id="useremail"
+                                                                    name="text_visitado" placeholder="Digite nome e Patente do Visitado">
+                                                                <span class="form-text text-muted"><small>If you want to
+                                                                        change email please <a
+                                                                            href="javascript: void(0);">click</a>
+                                                                        here.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="example-select" class="form-label">Sector que
+                                                                    pretende visitar</label>
+                                                                <select class="form-select" id="example-select"
+                                                                    name="departamento">
+                                                                    <option value="NENHUM SECTOR VISTADO">Selecione um
+                                                                        sector</option>
+                                                                    {{departamentoItem}}
+                                                                </select>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Numero de Celular</label>
+                                                                <input type="text" class="form-control" name="text_celular" data-toggle="input-mask" data-mask-format="(000) 00-000-0000">
+                                                                <span class="font-13 text-muted" required>e.g "(xxx) xx-xxx-xxxx"</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Celular Alternativo?</label>
+                                                                <input type="text" class="form-control" name="text_celular_alt" data-toggle="input-mask" data-mask-format="(000) 00-000-0000">
+                                                                        <span class="font-13 text-muted">e.g "(xxx) xx-xxx-xxxx"</span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Data de
+                                                                    Entrada</label>
+                                                                <div class="input-group">
+                                                                    <input type="text"
+                                                                        name="data_entrada"
+                                                                        class="form-control form-control-light"
+                                                                        value='{{date}}' readonly>
+                                                                    <span
+                                                                        class="input-group-text bg-primary border-primary text-white">
+                                                                        <i class="mdi mdi-calendar-range font-13"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <span class="form-text text-muted"><small>Data
+                                                                        disponibilizada pelo seu Sistema <a
+                                                                            href="javascript: void(0);">click</a>
+                                                                        here.</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Tem Viatura?</label>
+                                                                <input type="text" name="text_viatura" class="form-control" data-provide="typeahead" id="the-basics" placeholder="Digite a placa" required>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Portador de Arma?</label>
+                                                                <input type="text" name="text_arma" class="form-control" data-provide="typeahead" id="the-advanced" placeholder="Digite o tipo e o codigo da ARMA" required>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label for="userbio" class="form-label">Observacoes
+                                                                    Importantes (Opcional)</label>
+                                                                <textarea class="form-control" id="userbio" rows="4"
+                                                                    name="text_obs" placeholder="Descreva alguma coisa que julgue importante ou que tenha achado estranho nesse visitante..."></textarea>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <input type="text" id="code_guest"  name="text_codigo_visitante" class="form-control" hidden>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <h5 class="mb-3  bg-light p-2"><i
+                                                            class="mdi mdi-office-building me-1"></i> INFO: Depois de
+                                                        verificadas as Informacoes clique em salvar</h5>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                            </div>
+                                            <!-- end settings content-->
+                                        </div> <!-- end tab-content -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                    </form>
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.typehead.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+<!--
+    #===================================================================
+    # SCRIPT RELACIONADO COM O RECONHECIMENTO FACIAL
+    #===================================================================
+-->
+<script>
+    Webcam.set({
+        width: 470,
+        height: 390,
+        image_format: 'jpg',
+        jpeg_quality: 80  // Qualidade reduzida para melhorar a performance
+    });
+
+    // Inicializa a webcam
+    Webcam.attach("#my_camera");
+
+    // Função para capturar a imagem
+    function startCapture() {
+        // Esconde o botão "Capturar" e mostra o botão "Carregando..."
+        document.getElementById("capture-btn").style.display = "none";
+        document.getElementById("loading-btn").style.display = "inline-block";
+        
+        // Captura a imagem
+        takeSnapshot();
+    }
+
+    // Função para capturar a imagem da webcam
+    function takeSnapshot() {
+        Webcam.snap(function (data_uri) {
+            // Exibe a imagem capturada na seção de resultados
+            document.getElementById("results").innerHTML = '<img src="' + data_uri + '" class="rounded-circle avatar-lg img-thumbnail" name="imagem" alt="profile-image">';
+            // Converte a imagem base64 em um Blob para enviar para a API
+            sendToApi(data_uri);
+        });
+    }
+
+
+    // Função para enviar a imagem capturada para a API
+    async function sendToApi(imageData) {
+        const base64Image = imageData.split(',')[1];
+
+        // Cria um Blob da imagem base64
+        const byteCharacters = atob(base64Image);
+        const byteArrays = [];
+        
+        for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+            const slice = byteCharacters.slice(offset, offset + 512);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, { type: 'image/jpeg' });
+
+        // Cria um objeto File a partir do Blob
+        const file = new File([blob], 'captured_image.jpg', { type: 'image/jpeg' });
+
+        // Cria um DataTransfer para adicionar o arquivo ao input de arquivo
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+
+        // Agora envia a imagem via fetch para a API de reconhecimento
+        try {
+            const response = await fetch('http://127.0.0.1:5000/recognize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    image: base64Image  // Envia a imagem em base64
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Exibe os resultados da API
+
+                //funcao que verifica a existencia do visitante, caso sim nao faz upload da imagem
+                const label = result.results[0].label;
+                if(label == 'Desconhecido' ){
+                    document.getElementById('image-upload').files = dataTransfer.files;
+                    document.getElementById('name_guest').textContent = "Visitante não Cadastrado";
+                    closeModal();  
+                }else {
+                    displayResults(result.results);
+                }
+            } else {
+                console.error("Erro na API:", result.error);
+                document.getElementById("results").innerHTML = "<p>Erro ao processar a imagem. Tente novamente.</p>";
+            }
+        } catch (error) {
+            document.getElementById("results").innerHTML = "<p>Erro ao se comunicar com a Servidor.</p>";
+        }
+    }
+
+    // Função para exibir os resultados da API no frontend
+    function displayResults(results) {
+        console.log("Resultados recebidos:", results);
+        let output = '';
+
+        if (results && results.length > 0) {
+            results.forEach(result => {
+                document.getElementById('rec_certeza').textContent = `Percentagem de certeza: ${result.certainty.toFixed(2)}%`;
+
+                if (result.label !== 'Desconhecido' && result.label !== 'Nenhuma face detectada') {
+                    // Após exibir o nome do usuário, buscar dados na base de dados
+                    fetchUserData(result.label);  // Enviar o nome do usuário para buscar os dados
+                } else if (result.label === 'Desconhecido') {
+                    document.getElementById('name_guest').textContent = "Visitante não Cadastrado";
+                } else {
+                    document.getElementById('name_guest').textContent = "Nenhuma face detectada";
+                }
+            });
+        } else {
+            output = "<p>Nenhuma face reconhecida.</p>";
+        }
+
+        document.getElementById("results").innerHTML += output;
+        closeModal();
+    }
+
+    // Função para buscar dados do usuário na API e preencher o campo
+    async function fetchUserData(label) {
+        try {
+            const response = await fetch(`http://localhost:8888/sigecm/api/users/${label}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Atualiza o nome do usuário
+                document.getElementById('name_guest').textContent = result.name || 'Nome não encontrado';
+                // Preencher o campo de texto com o nome completo do usuário
+                document.getElementById('firstname').value = result.name || '';
+                document.getElementById('code_guest').value = result.id || ''; 
+            } else {
+                console.error("Erro ao buscar dados do usuário:", result.error);
+            }
+        } catch (error) {
+            console.error("Erro na requisição para buscar dados do usuário:", error);
+        }
+    }
+
+    function closeModal() {
+        $('#signup-modal').modal('hide');
+    }
+    
+    window.onload = function() {
+        console.log("Pronto para capturar imagem.");
+    }
+</script>
+
+</body>

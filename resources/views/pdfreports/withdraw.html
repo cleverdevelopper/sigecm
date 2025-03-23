@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatorio</title>
+    <style>
+        .cabecalho {
+            width: 100%;
+            text-align: center; /* Centering the content */
+            margin-bottom: 20px; /* Optional: adds space below the header */
+        }
+
+        .cabecalho_logo {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .logo_page {
+            max-width: 40px; 
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .cabecalho_info {
+            margin-top: 5px;
+        }
+
+        .cabecalho_info h3,
+        .cabecalho_info p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cabecalho_info h3 {
+            font-size: 20px;
+        }
+
+        .titulo_documento h4{
+            font-weight: 400;
+            font-size: 17px;
+        }
+
+        .titulo_documento .line{
+            width: 100%;
+            border-top: 1px solid #ccc;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color:  #727cf5;
+            color: white;
+        }
+
+        footer{
+            position: absolute;
+            bottom: 0;
+            float: right;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="cabecalho">
+        <div class="cabecalho_logo">
+            <!-- Logo image with centering applied -->
+            <img class="logo_page" src="http://localhost:8888/sigecm/resources/views/assets/images/emblema.png" alt="Logo">
+        </div>
+        
+        <div class="cabecalho_info">
+            <h3>República de Moçambique</h3>
+            <p>Presidência da República</p>
+            <p>Casa Militar</p>
+        </div>
+    </div>
+
+    <div class="titulo_documento">
+        <h4>{{titulo}}</h4>
+        <div class="line"></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Patente e Nome</th>
+                <th>Tipo da arma</th>
+                <th>Numero de serie</th>
+                <th>Telefone</th>
+                <th>Data levantamento</th>
+                <th>Assinatura</th>
+              </tr>
+        </thead>
+        <tbody>
+            {{tableItem}}
+        </tbody>
+      </table>
+
+
+    <footer>
+        <p>Processado por Computador por {{utilizador}}</p>
+        <p>{{data_atual}}</p>
+    </footer>
+
+</body>
+</html>

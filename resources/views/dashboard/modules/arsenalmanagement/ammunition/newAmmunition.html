@@ -1,0 +1,269 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao do Armamento</a></li>
+                                        <li class="breadcrumb-item active">Nova Municao</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Nova Municao</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                    class="nav-link rounded-0 active">
+                                                    REGISTAR NOVA MUNICAO
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="settings">
+                                                    <h5 class="mb-4 text-uppercase"><i
+                                                            class="mdi mdi-account-circle me-1"></i> Dados importantes da Municao
+                                                    </h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Nome da Municao</label>
+                                                                <select name="text_calibre_municao" class="form-select" id="example-select">
+                                                                    <option value="22lr">.22 LR (Long Rifle)</option>
+                                                                    <option value="9mm">9mm (9x19mm Parabellum)</option>
+                                                                    <option value="40sw">.40 S&W</option>
+                                                                    <option value="45acp">.45 ACP</option>
+                                                                    <option value="380acp">.380 ACP</option>
+                                                                    <option value="556mm">5.56mm NATO (.223 Remington)</option>
+                                                                    <option value="762mm">7.62mm NATO (.308 Winchester)</option>
+                                                                    <option value="308win">.308 Winchester</option>
+                                                                    <option value="223rem">.223 Remington</option>
+                                                                    <option value="12gauge">12 Gauge</option>
+                                                                    <option value="20gauge">20 Gauge</option>
+                                                                    <option value="10gauge">10 Gauge</option>
+                                                                    <option value="155mm">155mm (Artilharia)</option>
+                                                                    <option value="120mm">120mm (Canhão de Tanque)</option>
+                                                                    <option value="50bmg">.50 BMG (Browning Machine Gun)</option>
+                                                                    <option value="338lapua">.338 Lapua Magnum</option>
+                                                                    <option value="454casull">.454 Casull</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Nome da munição (ex: 9mm, .223 Remington).</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Arma compativel</label>
+                                                                <select class="form-select" id="example-select" name="text_type">
+                                                                    <option>Selecione um tipo de arma</option>
+                                                                    {{typeItem}}
+                                                                </select>
+                                                                <span class="form-text text-muted"><small>A Arma ou tipo de arma com a qual a munição é compatível.</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Tipo da Municao</label>
+                                                                <select name="text_tipo_municao" class="form-select" id="example-select">
+                                                                    <option value="fogo">Fogo</option>
+                                                                    <option value="blindada">Blindada</option>
+                                                                    <option value="alta_velocidade">Alta Velocidade</option>
+                                                                    <option value="fragmentacao">Fragmentação</option>
+                                                                    <option value="ponta_oca">Ponta Oca (Hollow Point)</option>
+                                                                    <option value="nao_letal">Não Letal</option>
+                                                                    <option value="sinalizacao">Sinalização</option>
+                                                                    <option value="treinamento">Treinamento</option>
+                                                                    <option value="incendiaria">Incendiária</option>
+                                                                    <option value="precisao">Precisão</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Tipo de munição (ex: Fogo, Incendiária, Ponta Oca, etc).</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Peso da Municao</label>
+                                                                <select name="text_peso_municao" class="form-select" id="example-select">
+                                                                    <option value="">Selecione o Peso da Munição</option>
+                                                                    <option value="7g a 10g">7g a 10g (Pistola 9mm)</option>
+                                                                    <option value="10g a 14g">10g a 14g (Pistola .40 S&W)</option>
+                                                                    <option value="14g a 17g">14g a 17g (Pistola .45 ACP)</option>
+                                                                    <option value="3g a 5g">3g a 5g (Fuzil 5.56mm NATO)</option>
+                                                                    <option value="8g a 10g">8g a 10g (Fuzil 7.62mm NATO)</option>
+                                                                    <option value="9g a 12g">9g a 12g (.308 Winchester)</option>
+                                                                    <option value="16g a 20g">16g a 20g (.338 Lapua Magnum)</option>
+                                                                    <option value="40g a 50g">40g a 50g (.50 BMG)</option>
+                                                                    <option value="28g a 40g">28g a 40g (Espingarda 12 Gauge)</option>
+                                                                    <option value="25g a 35g">25g a 35g (Espingarda 20 Gauge)</option>
+                                                                    <option value="50kg">Até 50kg (Artilharia 155mm)</option>
+                                                                    <option value="1kg a 100kg">1kg a 100kg (Foguetes)</option>
+                                                                    <option value="10g a 20g">10g a 20g (Bala de Borracha)</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Peso da munição (em gramas (0.5) ou quilogramas(1.0))</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Velocidade inicial</label>
+                                                                <select name="text_velocidade_inicial" class="form-select" id="example-select">
+                                                                    <option value="">Selecione a Velocidade Inicial</option>
+                                                                    <option value="300 a 400 m/s">300 m/s a 400 m/s (Pistola 9mm, .40 S&W)</option>
+                                                                    <option value="250 a 350 m/s">250 m/s a 350 m/s (Pistola .45 ACP)</option>
+                                                                    <option value="800 a 1000 m/s">800 m/s a 1.000 m/s (Fuzil 5.56mm NATO)</option>
+                                                                    <option value="700 a 900 m/s">700 m/s a 900 m/s (Fuzil 7.62mm NATO)</option>
+                                                                    <option value="900 a 1000 m/s">900 m/s a 1.000 m/s (Carabina .223 Remington)</option>
+                                                                    <option value="700 a 800 m/s">700 m/s a 800 m/s (Fuzil AK-47)</option>
+                                                                    <option value="700 a 900 m/s">700 m/s a 900 m/s (.308 Winchester)</option>
+                                                                    <option value="900 a 1000 m/s">900 m/s a 1.000 m/s (.338 Lapua Magnum)</option>
+                                                                    <option value="800 a 1000 m/s">800 m/s a 1.000 m/s (.50 BMG)</option>
+                                                                    <option value="300 a 500 m/s">300 m/s a 500 m/s (Espingarda 12 Gauge)</option>
+                                                                    <option value="600 a 1000 m/s">600 m/s a 1.000 m/s (Míssil de Cruzeiro)</option>
+                                                                    <option value="1000 a 3000 m/s">1.000 m/s a 3.000 m/s (Míssil Ar-Superfície)</option>
+                                                                    <option value="5000 a 8000 m/s">5.000 m/s a 8.000 m/s (Míssil ICBM)</option>
+                                                                    <option value="800 a 1200 m/s">800 m/s a 1.200 m/s (Artilharia 155mm)</option>
+                                                                    <option value="200 a 400 m/s">200 m/s a 400 m/s (Foguete RPG)</option>
+                                                                    <option value="1000 a 3000 m/s">1.000 m/s a 3.000 m/s (Foguete de Longo Alcance)</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Velocidade da munição ao sair do cano da arma em m/s.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Capacidade de penetracao </label>
+                                                                <select name="text_capacidade_penetracao" class="form-select" id="example-select">
+                                                                    <option value="">Selecione a Capacidade de Penetração</option>
+                                                                    <option value="15 a 20 mm">15 mm a 20 mm (Pistola 9mm FMJ)</option>
+                                                                    <option value="20 a 30 mm">20 mm a 30 mm (Pistola .40 S&W)</option>
+                                                                    <option value="25 a 35 mm">25 mm a 35 mm (Fuzil AK-47)</option>
+                                                                    <option value="10 a 20 mm">10 mm a 20 mm (Fuzil 5.56mm NATO)</option>
+                                                                    <option value="20 a 30 mm">20 mm a 30 mm (Fuzil 7.62mm NATO)</option>
+                                                                    <option value="30 a 50 mm">30 mm a 50 mm (.308 Winchester)</option>
+                                                                    <option value="50 a 100 mm">50 mm a 100 mm (.338 Lapua Magnum)</option>
+                                                                    <option value="100 a 150 mm">100 mm a 150 mm (.50 BMG - AP)</option>
+                                                                    <option value="5 a 10 mm">5 mm a 10 mm (Espingarda 12 Gauge)</option>
+                                                                    <option value="500 a 900 mm">500 mm a 900 mm (Míssil Anti-tanque)</option>
+                                                                    <option value="200 a 400 mm">200 mm a 400 mm (Artilharia 155mm)</option>
+                                                                    <option value="500 a 700 mm">500 mm a 700 mm (Canhão de Tanque 120mm)</option>
+                                                                    <option value="800 a 1200 mm">800 mm a 1.200 mm (APFSDS)</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Descrição da capacidade de penetração (ex: alta, média).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Fabricante</label>
+                                                                <input type="text" class="form-control" name="text_fabriante" placeholder="Digite o fabricante da municao" >
+                                                                <span class="font-13 text-muted">abricante da munição (opcional).</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3 position-relative" id="datepicker1">
+                                                                <label class="form-label">Data de Fabricacao</label>
+                                                                <input type="text" name="text_data_fabricacao" class="form-control" data-provide="datepicker" data-date-container="#datepicker1">
+                                                                <span class="form-text text-muted"><small>Data de fabricação da munição.</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Quantidade em Estoque </label>
+                                                                <input type="text" class="form-control" name="text_quantidade" placeholder="Digite a quantidade em estoque" >
+                                                                <span class="font-13 text-muted">Quantidade de munições disponíveis no estoque.</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->  
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label for="userbio" class="form-label">Observacoes</label>
+                                                                <textarea class="form-control" id="userbio" rows="4"
+                                                                    name="text_descricao" placeholder="Descreva algumas informacoes adicionais sobre a municao..."></textarea>
+                                                                <span class="form-text text-muted"><small>Campo para informações adicionais sobre a munição (opcional).</small></span>    
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->  
+                                                    
+                                                    <h5 class="mb-3  bg-light p-2"><i
+                                                            class="mdi mdi-office-building me-1"></i> INFO: Depois de
+                                                        verificadas as Informacoes clique em salvar</h5>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                            </div>
+                                            <!-- end settings content-->
+                                        </div> <!-- end tab-content -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                    </form>
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.typehead.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+</body>

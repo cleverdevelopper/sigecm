@@ -1,0 +1,330 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao do Armamento</a></li>
+                                        <li class="breadcrumb-item active">Nova Classificacao</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Nova Classificacao</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                    class="nav-link rounded-0 active">
+                                                    REGISTAR TIPO DE ARMAMENTO
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="settings">
+                                                    <h5 class="mb-4 text-uppercase"><i
+                                                            class="mdi mdi-account-circle me-1"></i> Dados importantes da Tipo de Armamento
+                                                    </h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Classificacao do Armamento</label>
+                                                                <select class="form-select" id="example-select" name="text_classificacao">
+                                                                    <option value="">Selecione uma classificacao</option>
+                                                                    <option value="Arma de fogo">Arma de Fogo</option>
+                                                                    <option value="Explosivo">Explosivo</option>
+                                                                    <option value="Missil">Míssil</option>
+                                                                    <option value="Arma blindada">Arma Blindada</option>
+                                                                    <option value="Armas quimicas">Armas Químicas</option>
+                                                                    <option value="Armas biologicas">Armas Biológicas</option>
+                                                                    <option value="Armas nucleares">Armas Nucleares</option>
+                                                                    <option value="Armas brancas">Armas Brancas</option>
+                                                                    <option value="Granada">Granada</option>
+                                                                    <option value="Foguete">Foguete</option>
+                                                                    <option value="Lanca foguetes">Lança-Foguetes</option>
+                                                                    <option value="Arma de_energia">Arma de Energia</option>
+                                                                    <option value="Arma laser">Arma Laser</option>
+                                                                    <option value="Arma de_rapidez">Arma de Alta Velocidade</option>
+                                                                    <option value="Armas radar">Armas Radar</option>
+                                                                    <option value="Armas eletromagneticas">Armas Eletromagnéticas</option>
+                                                                    <option value="Armas naval">Armas Navais</option>
+                                                                    <option value="Armas aereas">Armas Aéreas</option>
+                                                                </select>
+                                                                <span class="form-text text-muted"><small>Categoria principal do armamento (ex: Arma de Fogo, Explosivo, Míssil).</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Tipo do armamento</label>
+                                                                <select name="text_tipo_armamento" class="form-select" id="tipo_armamento">
+                                                                    <option value="">Selecione o Tipo de Armamento</option>
+                                                                    <option value="Pistola">Pistola</option>
+                                                                    <option value="Fuzil">Fuzil</option>
+                                                                    <option value="Submetralhadora">Submetralhadora</option>
+                                                                    <option value="Rifle">Rifle</option>
+                                                                    <option value="Espingarda">Espingarda</option>
+                                                                    <option value="Metralhadora">Metralhadora</option>
+                                                                    <option value="Granada">Granada</option>
+                                                                    <option value="Missil">Míssil</option>
+                                                                    <option value="Lanca foguetes">Lança-Foguetes</option>
+                                                                    <option value="Canhao">Canhão</option>
+                                                                    <option value="Tanque">Tanque</option>
+                                                                    <option value="Aviacao">Avião de Combate</option>
+                                                                    <option value="Helicoptero">Helicóptero de Combate</option>
+                                                                    <option value="Navio de guerra">Navio de Guerra</option>
+                                                                    <option value="Submarino">Submarino</option>
+                                                                    <option value="Arma blindada">Arma Blindada</option>
+                                                                    <option value="Arma quimica">Arma Química</option>
+                                                                    <option value="Arma biologica">Arma Biológica</option>
+                                                                    <option value="Arma nuclear">Arma Nuclear</option>
+                                                                    <option value="Arma de energia">Arma de Energia</option>
+                                                                    <option value="Arma laser">Arma Laser</option>
+                                                                    <option value="Arma eletromagnetica">Arma Eletromagnética</option>
+                                                                    <option value="Radar">Radar</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Tipo do armamento de acordo com a classificacao (ex: Pistola, Fuzil, Granada, etc.).</small></span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Tipo de Uso</label>
+                                                                <select name="text_tipo_uso" class="form-select" id="example-select">
+                                                                    <option value="Militar">Militar</option>
+                                                                    <option value="Policial">Policial</option>
+                                                                    <option value="Civil">Civil</option>
+                                                                    <option value="Defesa">De Defesa</option>
+                                                                    <option value="Controle de disturbios">De Controle de Distúrbios</option>
+                                                                    <option value="Antiterrorismo">Antiterrorismo</option>
+                                                                    <option value="Caca">De Caça</option>
+                                                                    <option value="Treinamento">De Treinamento</option>
+                                                                    <option value="Nao letal">Não Letal</option>
+                                                                    <option value="Ofensivo">Ofensivo</option>
+                                                                </select>
+                                                                <span class="form-text text-muted"><small>Tipo de uso do armamento (ex: Militar, Policial, Civil).</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Potencia</label>
+                                                                <select name="text_potencia" class="form-select" id="example-select">
+                                                                    <option value="Leve">Leve</option>
+                                                                    <option value="Media">Média</option>
+                                                                    <option value="Pesada">Pesada</option>
+                                                                    <option value="Extrema">Extrema</option>
+                                                                </select>
+                                                                <span class="form-text text-muted"><small>Potência do armamento (ex: Leve, Médio, Pesado).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Alcance Eficaz</label>
+                                                                <select name="text_alcance_eficaz" class="form-select" id="alcance_eficaz">
+                                                                    <option value="">Selecione o Alcance Eficaz</option>
+                                                                    <option value="Curto ate 50 metros">Curto (até 50 metros)</option>
+                                                                    <option value="Medio 50 a 500 metros">Médio (50 a 500 metros)</option>
+                                                                    <option value="Longo 500 a 2km">Longo (500 metros a 2 km)</option>
+                                                                    <option value="Muito longo acima de 2 km">Muito Longo (acima de 2 km)</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Distância máxima que o armamento pode alcançar efetivamente.</small></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Tipo de municao</label>
+                                                                <select name="text_tipo_municao" class="form-select" id="example-select">
+                                                                    <option value="Fogo">Fogo</option>
+                                                                    <option value="Blindada">Blindada</option>
+                                                                    <option value="Alta velocidade">Alta Velocidade</option>
+                                                                    <option value="Fragmentacao">Fragmentação</option>
+                                                                    <option value="Ponta oca">Ponta Oca (Hollow Point)</option>
+                                                                    <option value="Nao letal">Não Letal</option>
+                                                                    <option value="Sinalizacao">Sinalização</option>
+                                                                    <option value="Treinamento">Treinamento</option>
+                                                                    <option value="Incendiaria">Incendiária</option>
+                                                                    <option value="Precisao">Precisão</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>Tipo de munição compatível com o armamento (ex: Alta velocidade, Blindada).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Calibre da Municao</label>
+                                                                <select name="text_calibre_municao" class="form-select" id="calibre_municao">
+                                                                    <option value="22lr">.22 LR (Long Rifle)</option>
+                                                                    <option value="9mm">9mm (9x19mm Parabellum)</option>
+                                                                    <option value="40sw">.40 S&W</option>
+                                                                    <option value="45acp">.45 ACP</option>
+                                                                    <option value="380acp">.380 ACP</option>
+                                                                    <option value="556mm">5.56mm NATO (.223 Remington)</option>
+                                                                    <option value="762mm">7.62mm NATO (.308 Winchester)</option>
+                                                                    <option value="308win">.308 Winchester</option>
+                                                                    <option value="223rem">.223 Remington</option>
+                                                                    <option value="12gauge">12 Gauge</option>
+                                                                    <option value="20gauge">20 Gauge</option>
+                                                                    <option value="10gauge">10 Gauge</option>
+                                                                    <option value="155mm">155mm (Artilharia)</option>
+                                                                    <option value="120mm">120mm (Canhão de Tanque)</option>
+                                                                    <option value="50bmg">.50 BMG (Browning Machine Gun)</option>
+                                                                    <option value="338lapua">.338 Lapua Magnum</option>
+                                                                    <option value="454casull">.454 Casull</option>
+                                                                </select>                                                                                                                               
+                                                                <span class="font-13 text-muted">Calibre da munição utilizada pelo armamento (ex: 9mm, .223, 7,62mm).</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Pais de Origem</label>
+                                                                <select name="text_pais_origem" class="form-select" id="pais_origem">
+                                                                    <option value="">Selecione o País de Origem</option>
+                                                                    <option value="Eua">Estados Unidos</option>
+                                                                    <option value="Russia">Rússia</option>
+                                                                    <option value="China">China</option>
+                                                                    <option value="Alemanha">Alemanha</option>
+                                                                    <option value="Franca">França</option>
+                                                                    <option value="Inglaterra">Reino Unido</option>
+                                                                    <option value="Israel">Israel</option>
+                                                                    <option value="India">Índia</option>
+                                                                    <option value="Brasil">Brasil</option>
+                                                                    <option value="Italia">Itália</option>
+                                                                    <option value="Suica">Suíça</option>
+                                                                    <option value="Japao">Japão</option>
+                                                                    <option value="Suecia">Suécia</option>
+                                                                    <option value="Coreia do sul">Coreia do Sul</option>
+                                                                    <option value="Turquia">Turquia</option>
+                                                                    <option value="Africa do sul">África do Sul</option>
+                                                                    <option value="Argentina">Argentina</option>
+                                                                    <option value="Paises baixos">Países Baixos</option>
+                                                                    <option value="Espanha">Espanha</option>
+                                                                </select>                                                                
+                                                                <span class="form-text text-muted"><small>País de origem do armamento (ex: EUA, Rússia, China).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Finalidade</label>
+                                                                <select name="text_finalidade" class="form-select" id="example-select">
+                                                                    <option value="Combate">Combate</option>
+                                                                    <option value="Defesa">Defesa</option>
+                                                                    <option value="Controle disturbios">Controle de Distúrbios</option>
+                                                                    <option value="Caca">Caça</option>
+                                                                    <option value="Treinamento">Treinamento</option>
+                                                                    <option value="Defesa pessoal">Defesa Pessoal</option>
+                                                                    <option value="Operacoes especiais">Operações Especiais</option>
+                                                                    <option value="Pesquisa desenvolvimento">Pesquisa e Desenvolvimento</option>
+                                                                    <option value="Seguranca publica">Segurança Pública</option>
+                                                                    <option value="Controle animais">Controle de Animais</option>
+                                                                </select>                                                                
+                                                                <span class="font-13 text-muted">Finalidade do armamento (ex: Combate, Defesa, Controle de Distúrbios).</span>
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Categoria de Perigo</label>
+                                                                <select name="text_categoria_perigo" class="form-select" id="example-select">
+                                                                    <option value="Alto perigo">Alto Perigo</option>
+                                                                    <option value="Medio perigo">Médio Perigo</option>
+                                                                    <option value="Baixo perigo">Baixo Perigo</option>
+                                                                    <option value="Perigo controlado">Perigo Controlado</option>
+                                                                    <option value="Perigo zero">Perigo Zero</option>
+                                                                </select>
+                                                                <span class="form-text text-muted"><small>Categoria de perigo (ex: Alto Perigo, Baixo Perigo).</small></span>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end row -->  
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="mb-3">
+                                                                <label for="userbio" class="form-label">Descrição</label>
+                                                                <textarea class="form-control" id="userbio" rows="4"
+                                                                    name="text_descricao" placeholder="Descreva algumas informacoes adicionais sobre o tipo de arma..."></textarea>
+                                                                <span class="form-text text-muted"><small>Descrição detalhada do tipo de armamento (ex: "Arma de fogo curta e semiautomática").</small></span>    
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->  
+                                                    <h5 class="mb-3  bg-light p-2"><i
+                                                            class="mdi mdi-office-building me-1"></i> INFO: Depois de
+                                                        verificadas as Informacoes clique em salvar</h5>
+                                                    <div class="col-12 text-center">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                            </div>
+                                            <!-- end settings content-->
+                                        </div> <!-- end tab-content -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                    </form>
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.typehead.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+</body>
