@@ -14,9 +14,11 @@ Esse repositório contém o código-fonte da plataforma e da API.
   - [Clonar o projeto](#clonar-o-projeto)
   - [Criacao da Base de Dados](#criacao-da-base-de-dados)
 - [Rodar os testes](#rodar-os-testes)
+- [Acessando a base de dados com Workbench](#acessando-base-de-dados-com-workbench)
 - [Histórico do desenvolvimento](#histórico-de-desenvolvimento)
   - [Início do projeto](#início-do-projeto)
   - [Milestones](#milestones)
+
 
 ## Instalar e rodar o projeto
 
@@ -150,6 +152,51 @@ Em seguida, criaremos as tabela.s A partir do console do MySQL, execute os coman
 
 Há várias formas de rodar os testes dependendo do que você deseja fazer, mas o primeiro passo antes de fazer qualquer alteração no projeto é rodar os testes de forma geral para se certificar que tudo está passando como esperado.
 
+## Acessando a base de dedos com Workbench
+Primeiro entrar no servidor e rodar o seguinte comando
+```bash
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+
+Em seguida, alterar o ip do bind-address para um ip em especifico ou para geral
+```bash
+bind-address = 127.0.0.1 #Alterar este ip
+bind-address = 0.0.0.0 # ou bind-address = 192.168.x.x
+```
+### Configurando o mysql para aceitar a conexoes externas
+Faça login no MySQL com o comando:
+```bash
+sudo mysql -u root -p
+```
+
+Criar o usuário root para %:
+```bash
+CREATE USER 'root'@'%' IDENTIFIED BY 'senha';
+```
+Conceder permissões ao usuário root:
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+Verificar as permissoes:
+```bash
+SHOW GRANTS FOR 'root'@'%';
+```
+
+Alterar a senha (se necessário):
+```bash
+ALTER USER 'root'@'%' IDENTIFIED BY 'senha';
+exit
+```
+
+
+Reiniciar o mysql:
+```bash
+sudo systemctl restart mysql
+```
+
+Agora atraves de um computador que esteja na rede sera possivel aceder ao mysql do servidor a atraves do Workbench
+
 
 ## Histórico de Desenvolvimento
 
@@ -166,3 +213,5 @@ Em caso do composer de ocorrer erros entre o php 8.2 e o 7.*
 ```bash
 sudo apt-get purge php7.*
 ```
+
+
