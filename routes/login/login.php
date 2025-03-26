@@ -1,5 +1,5 @@
 <?php
-    use App\Controller\login;;
+    use App\Controller\Login;;
     use App\Http\Response;
 
    
