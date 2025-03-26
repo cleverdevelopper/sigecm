@@ -105,7 +105,7 @@ sudo nano .env
 
 - Modificar o ficheiro .env do sistema
 ```bash
-URL=http://ip ou dominio/sigecm
+URL=http://ip ou dominio
 BD_HOST=127.0.0.1
 BD_DATABASE=sigecm_database
 BD_CHARSET=utf8
