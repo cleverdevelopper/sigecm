@@ -36,7 +36,7 @@ use Dompdf\Options;
         # Funcoes relacionadas as classificacoes das armas
         #============================================================================
         public static function getNewWeaponType($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(11)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_types/newWeaponType',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -93,7 +93,7 @@ use Dompdf\Options;
 
 
         public static function getWeaponTypesPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(11)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_types/weaponTypes',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -142,7 +142,7 @@ use Dompdf\Options;
         }
 
         public static function getNewWeapon($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(11)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapons/newWeapon',[
                     'navbar'                => parent::getNavbar(),
                     'sidebar'               => parent::getMenu(),
@@ -209,7 +209,7 @@ use Dompdf\Options;
 
 
         public static function getWeaponsPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(11)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapons/weapons',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -244,7 +244,7 @@ use Dompdf\Options;
             return $itens;
         }
         public static function getNewAmmunition($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(12)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/ammunition/newAmmunition',[
                     'navbar'                => parent::getNavbar(),
                     'sidebar'               => parent::getMenu(),
@@ -260,7 +260,7 @@ use Dompdf\Options;
 
 
         public static function setNewAmmunition($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(12)){
                 $postVars = $request->getPostVars();
 
                 $cod_type = (int) $postVars['text_type'];
@@ -306,7 +306,7 @@ use Dompdf\Options;
         }
 
         public static function getAmmunitionPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(12)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/ammunition/ammunition',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -328,7 +328,7 @@ use Dompdf\Options;
         # Funcoes relacionadas aos equipamentos
         #============================================================================
         public static function getNewEquipment($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(13)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/equipment/newEquipment',[
                     'navbar'                => parent::getNavbar(),
                     'sidebar'               => parent::getMenu(),
@@ -342,7 +342,7 @@ use Dompdf\Options;
         }
 
         public static function SetNewEquipment($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(13)){
                 $postVars = $request->getPostVars();
 
                 $quantinty = (int) $postVars['text_quantidade'];
@@ -391,7 +391,7 @@ use Dompdf\Options;
         }
 
         public static function getEquipmentPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(13)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/equipment/equipment',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -409,7 +409,7 @@ use Dompdf\Options;
 
 
         public static function SetNewEquipmentWithdraw($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(13)){
                 $file = $request->getFile();
                 $postVars = $request->getPostVars();
 
@@ -485,7 +485,7 @@ use Dompdf\Options;
 
 
         public static function getNewEquipmentWithdraw($request, $mensagem = ''){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(13)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/equipment/newEquipmentWithdraw',[
                     'navbar'                => parent::getNavbar(),
                     'sidebar'               => parent::getMenu(),
@@ -539,7 +539,7 @@ use Dompdf\Options;
         }
 
         public static function getNewWithdraw($request, $mensagem = ''){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/newWithdraw',[
                     'navbar'                => parent::getNavbar(),
                     'sidebar'               => parent::getMenu(),
@@ -556,7 +556,7 @@ use Dompdf\Options;
         }
 
         public static function SetNewWithdraw($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $file = $request->getFile();
                 $postVars = $request->getPostVars();
 
@@ -649,7 +649,7 @@ use Dompdf\Options;
 
 
         public static function getWeaponsInventoryPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/weaponWithdraw',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
@@ -684,7 +684,7 @@ use Dompdf\Options;
         }
 
         public static function getNewWeaponReturn($request, $id){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $objArrecacao = ArrecadacaoEntity::getArrecadacaoById($id);
 
                 $objStatus = StatusArmamentoEntity::getStatusById($objArrecacao->status_operacional_arma);
@@ -774,7 +774,7 @@ use Dompdf\Options;
         }
 
         public static function getWeaponsReturnPage($request){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/weaponReturn',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),

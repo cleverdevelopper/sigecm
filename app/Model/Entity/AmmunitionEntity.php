@@ -16,7 +16,8 @@
         public $arma_compativel; 
         public $observacoes; 
         public $criado_em;
-        public $atualizado_em;  
+        public $atualizado_em;
+        public $apagado_em;  
         
         
         public  function cadastrar(){

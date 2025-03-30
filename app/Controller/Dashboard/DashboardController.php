@@ -85,7 +85,7 @@
                 ]);
                 return parent::getPage('SIGECM | Painel Incial', $content);
             }elseif(Funcoes::Permition(9)){
-                $content = ViewManager::render('dashboard/modules/home/painel',[
+                $content = ViewManager::render('dashboard/painelArmamento',[
                     'navbar'        => parent::getNavbar(),
                     'sidebar'       => parent::getMenu(),
                     'rightsidebar'  => parent::getRightSidebar(),

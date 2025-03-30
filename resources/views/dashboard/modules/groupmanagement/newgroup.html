@@ -26,7 +26,7 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestao de grupos</a>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestão de grupos</a>
                                         </li>
                                         <li class="breadcrumb-item active">Novo grupo</li>
                                     </ol>
@@ -60,7 +60,7 @@
                                                     <h4 class="mt-2">Criar Novo Grupo</h4>
 
                                                     <p class="text-muted mb-4">Abaixo sao listadas as diferentes
-                                                        funcionalidades do sistema, assinale as permissoes que pretende
+                                                        funcionalidades do sistema, assinale as permissões  que pretende
                                                         dar ao grupo de utilizador que esta criando.</p>
 
                                                     <!-- Pay with Paypal box-->
@@ -84,7 +84,7 @@
                                                                     <div class="col-12">
                                                                         <div class="mb-0 mt-3">
                                                                             <label for="example-textarea"
-                                                                                class="form-label">Descricao do
+                                                                                class="form-label">Descrição do
                                                                                 grupo:</label>
                                                                             <textarea class="form-control"
                                                                                 name="text_descricao"
@@ -105,7 +105,7 @@
                                                             <div class="mb-0">
                                                                 <label for="billing-address"
                                                                     class="form-check-label font-16 fw-bold">Administração</label>
-                                                                <p class="mb-3 ps-0 pt-1">Permissoes destinadas a area
+                                                                <p class="mb-3 ps-0 pt-1">Permissões destinadas a área
                                                                     da Administração</p>
                                                             </div>
                                                         </div> <!-- end row -->
@@ -119,7 +119,7 @@
                                                                                     data-bs-toggle="tab"
                                                                                     aria-expanded="false"
                                                                                     class="nav-link active">
-                                                                                    Permissoes
+                                                                                    Permissões 
                                                                                 </a>
                                                                             </li>
                                                                         </ul> <!-- end nav-->
@@ -134,7 +134,7 @@
                                                                                                 <th>Activo | Inactivo
                                                                                                 </th>
                                                                                                 <th>Funcionalidade</th>
-                                                                                                <th>Descricao</th>
+                                                                                                <th>Descrição</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
@@ -159,7 +159,7 @@
                                                                 <label for="billing-address"
                                                                     class="form-check-label font-16 fw-bold">Gestao de
                                                                     Visitantes</label>
-                                                                <p class="mb-3 ps-0 pt-1">Permissoes destinadas a area
+                                                                <p class="mb-3 ps-0 pt-1">Permissões destinadas a área
                                                                     da Visitantes</p>
                                                             </div>
                                                         </div> <!-- end row -->
@@ -173,7 +173,7 @@
                                                                                     data-bs-toggle="tab"
                                                                                     aria-expanded="false"
                                                                                     class="nav-link active">
-                                                                                    Permissoes
+                                                                                    Permissões 
                                                                                 </a>
                                                                             </li>
                                                                         </ul> <!-- end nav-->
@@ -188,11 +188,64 @@
                                                                                                 <th>Activo | Inactivo
                                                                                                 </th>
                                                                                                 <th>Funcionalidade</th>
-                                                                                                <th>Descricao</th>
+                                                                                                <th>Descrição</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             {{itemVisitas}}
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div> <!-- end table-responsive-->
+                                                                            </div> <!-- end preview-->
+
+                                                                        </div> <!-- end tab-content-->
+
+                                                                    </div> <!-- end card body-->
+                                                                </div> <!-- end card -->
+                                                            </div><!-- end col-->
+                                                        </div>
+                                                        <!-- end row-->
+                                                    </div>
+
+                                                    <div class="border p-3 pb-0 mb-3 rounded">
+                                                        <div class="row">
+                                                            <div class="mb-0">
+                                                                <label for="billing-address"
+                                                                    class="form-check-label font-16 fw-bold">Gestão da Repartição do Armamento</label>
+                                                                <p class="mb-3 ps-0 pt-1">Permissões destinadas a área
+                                                                    do Armamento</p>
+                                                            </div>
+                                                        </div> <!-- end row -->
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <ul class="nav nav-tabs nav-bordered mb-2">
+                                                                            <li class="nav-item">
+                                                                                <a href="#hoverable-rows-preview"
+                                                                                    data-bs-toggle="tab"
+                                                                                    aria-expanded="false"
+                                                                                    class="nav-link active">
+                                                                                    Permissões 
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul> <!-- end nav-->
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane show active"
+                                                                                id="hoverable-rows-preview">
+                                                                                <div class="table-responsive-sm">
+                                                                                    <table
+                                                                                        class="table table-hover table-sm table-centered mb-0">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Activo | Inactivo
+                                                                                                </th>
+                                                                                                <th>Funcionalidade</th>
+                                                                                                <th>Descrição</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            {{itemArmamento}}
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </div> <!-- end table-responsive-->
@@ -212,7 +265,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="text-sm-end">
                                                                 <button type="submit" class="btn btn-primary">
-                                                                    <i class="uil uil-message me-1"></i>Submeter
+                                                                    <i class="mdi mdi-content-save me-1"></i>Sarvar
                                                                 </button>
                                                             </div>
                                                         </div>

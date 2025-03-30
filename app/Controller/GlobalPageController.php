@@ -68,7 +68,14 @@
                     'visits'              => self::getVisitsMenu(),
                     'arsenal'             => '',
                 ]);
+            }elseif(Funcoes::Permition(9)){
+                return ViewManager::render('dashboard/menu/box', [
+                    'admin'               => '',
+                    'visits'              => '',
+                    'arsenal'             => self::getArsenal(),
+                ]);
             }
+
 
             /*if(Funcoes::Permition(0)){
                 return ViewManager::render('dashboard/menu/box', [

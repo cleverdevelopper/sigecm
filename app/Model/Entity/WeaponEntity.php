@@ -21,7 +21,8 @@
         public $observacoes; 
         public $cadastrado_por; 
         public $criado_em;
-        public $atualizado_em;  
+        public $atualizado_em;
+        public $apagado_em;  
         
         
         public  function cadastrar(){

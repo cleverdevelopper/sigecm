@@ -41,11 +41,6 @@
                 if(isset($postVars['check_permissao'])){
                     $permissoes = $postVars['check_permissao'];
                 }
-                
-                echo '<pre>';
-                print_r($postVars);
-                echo '</pre>';
-                exit;
 
                 $permissoes__finais = "";
                 for( $i = 0; $i < 100; $i++){
@@ -83,6 +78,7 @@
                     'footer'        => parent::getFooter(),
                     'itemAdmin'     => self::getPermissoes(0, 5, 'disabled'),
                     'itemVisitas'   => self::getPermissoes(5, 9, ''),
+                    'itemArmamento' => self::getPermissoes(9, 16, ''),
                     'status'        => self::getStatus($request)
                 ]);
 

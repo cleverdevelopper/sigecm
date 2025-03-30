@@ -125,6 +125,130 @@ Observações:
 
 - Você pode conferir o endereço dos outros serviços dentro do arquivo `.env` encontrado na raiz do projeto, como por exemplo o endereço e credenciais do Banco de Dados local ou o Frontend do Serviço de Email.
 
+### Geracao de certificado ssl
+1. Instalar o OpenSSL
+Primeiro, verifique se o OpenSSL está instalado no seu servidor. Caso não esteja, instale-o com o seguinte comando:
+```bash
+sudo apt update
+sudo apt install openssl
+```
+2. Gerar a chave privada
+Crie uma chave privada que será usada para gerar o certificado. Você pode gerar uma chave de 2048 bits (tamanho padrão):
+```bash
+openssl genpkey -algorithm RSA -out /etc/ssl/private/myserver.key -aes256
+```
+Este comando gera uma chave privada criptografada com AES-256 e a salva em /etc/ssl/private/myserver.key. Você pode substituir o caminho e nome do arquivo conforme necessário.
+
+3. Criar uma Solicitação de Assinatura de Certificado (CSR) — Opcional
+Embora você esteja criando um certificado autoassinado, você pode gerar uma solicitação de assinatura de certificado (CSR) se for necessário. Caso contrário, você pode pular este passo.
+```bash
+openssl req -new -key /etc/ssl/private/myserver.key -out /etc/ssl/myserver.csr
+```
+Durante este comando, você será solicitado a inserir informações como o nome do país, estado, cidade, nome da organização, e Common Name (CN), que é normalmente o domínio ou IP do servidor.
+
+4. Criar o Certificado Autoassinado
+Agora você pode criar o certificado autoassinado usando a chave privada gerada anteriormente:
+```bash
+openssl req -x509 -key /etc/ssl/private/myserver.key -in /etc/ssl/myserver.csr -out /etc/ssl/certs/myserver.crt -days 365
+```
+- x509: Isso indica que você está gerando um certificado autoassinado.
+
+- days 365: O certificado será válido por 365 dias. Você pode ajustar esse número conforme necessário.
+
+Isso gerará o certificado autoassinado e o salvará como /etc/ssl/certs/myserver.crt.
+
+5. Verificar o Certificado
+Para verificar o conteúdo do certificado gerado, você pode usar:
+```bash
+openssl x509 -in /etc/ssl/certs/myserver.crt -text -noout
+```
+## Ativar o módulo SSL no Apache
+1. Garantir que o modulo ssl esteja activado
+Primeiro, garanta que o módulo SSL do Apache esteja ativado:
+```bash
+sudo a2enmod ssl
+```
+
+2. Criar ou Editar o arquivo de configuração do VirtualHost
+A seguir, crie ou edite um arquivo de configuração do Apache para o seu VirtualHost. Normalmente, os arquivos de configuração do Apache para sites ficam em /etc/apache2/sites-available/.
+
+Vamos criar ou editar o arquivo de configuração para o VirtualHost usando o editor de sua escolha (por exemplo, nano):
+
+```bash
+sudo nano /etc/apache2/sites-available/ip_do_servidor_ou_dominio.conf
+```
+No arquivo de configuração, adicione o seguinte conteúdo para configurar o VirtualHost na porta 443:
+```bash
+<VirtualHost *:443>
+    ServerAdmin webmaster@yourdomain.com
+    ServerName ip_do_servidor ou dominio
+    DocumentRoot /var/www/sigecm
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/myserver.crt
+    SSLCertificateKeyFile /etc/ssl/private/myserver.key
+
+    # Se tiver algum certificado intermediário (opcional)
+    #SSLCertificateChainFile /etc/ssl/certs/myserver-chain.crt
+
+    <Directory /var/www/sigecm>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+Explicação do arquivo de configuração:
+- SSLEngine on: Habilita o SSL para o VirtualHost.
+
+- SSLCertificateFile: Caminho para o seu certificado (gerado com OpenSSL, no exemplo, é /etc/ssl/certs/myserver.crt).
+
+- SSLCertificateKeyFile: Caminho para a chave privada correspondente (no exemplo, /etc/ssl/private/myserver.key).
+
+- SSLCertificateChainFile: Caso tenha um arquivo de cadeia de certificação intermediária, adicione-o aqui. Caso não tenha, pode omitir essa linha.
+
+Substitua os caminhos e domínios pelos corretos para o seu servidor.
+
+3. Ativar o site
+Agora, ative o novo arquivo de configuração para o Apache:
+
+```bash
+sudo a2ensite ip_do_servidor_ou_dominio.conf
+```
+
+4. Verificar se há erros de configuração
+Verifique se há algum erro de configuração no Apache:
+
+```bash
+sudo apache2ctl configtest
+```
+Se o comando retornar Syntax OK, significa que a configuração está correta.
+
+5. Reiniciar o Apache
+Para aplicar as alterações, reinicie o Apache:
+```bash
+sudo systemctl restart apache2
+```
+
+6. Acessar o site via HTTPS
+Agora, ao acessar seu domínio https://ip_do_servidor_ou_dominio.com no navegador, o Apache deve servir o conteúdo do diretório /var/www/html usando HTTPS.
+
+7. Dica adicional:
+Se você quiser redirecionar automaticamente as requisições HTTP (porta 80) para HTTPS (porta 443), você pode configurar outro VirtualHost para a porta 80 e adicionar um redirecionamento para HTTPS:
+
+Exemplo de configuração para o VirtualHost na porta 80 (HTTP):
+```bash
+<VirtualHost *:80>
+    ServerAdmin webmaster@ip_do_servidor_ou_dominio
+    ServerName ip_do_servidor_ou_dominio
+    Redirect permanent / https://ip_do_servidor_ou_dominio/
+</VirtualHost>
+```
+Isso garantirá que qualquer tentativa de acessar o site via HTTP seja automaticamente redirecionada para HTTPS.
+
 ### Cadastro e Login de usuários
 
 No ambiente de desenvolvimento você poderá tanto criar usuários manualmente (inclusive para receber e testar o email de ativação), quanto utilizar usuários pré-cadastrados e que já foram ativados para sua conveniência.
