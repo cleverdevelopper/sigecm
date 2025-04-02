@@ -36,6 +36,43 @@
                     </div>
                     <!-- end page title -->
 
+
+
+                    <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                    
+                                <div class="modal-body">
+                                    <div class="text-center mt-2 mb-4">
+                                    </div>
+                                    <form id="myForm" class="ps-3 pe-3" method="POST">
+                                        <div class="mb-3">
+                                            <label class="form-label">Selecione um periodo especifico</label>
+                                            <div id="reportrange" class="form-control" data-toggle="date-picker-range" data-target-display="#selectedValue"  data-cancel-class="btn-light">
+                                                <i class="mdi mdi-calendar"></i>&nbsp;
+                                                <span id="selectedValue"></span> 
+                                                <i class="mdi mdi-menu-down"></i>
+                                            </div>
+                                        </div>
+                                        <!-- Campo oculto para armazenar a data selecionada -->
+                                        <input type="hidden" name="selectedDateRange" id="selectedDateRange">
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <input type="checkbox" name="text_data_checkbox" class="form-check-input" id="customCheck1">
+                                                <label class="form-check-label" for="customCheck1">Imprimir todos os registros</label>
+                                            </div> 
+                                        </div>
+                    
+                                        <div class="mb-3 text-center">
+                                            <button class="btn btn-primary" type="submit">Processar</button>
+                                        </div>
+                                    </form>
+                    
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
@@ -47,6 +84,7 @@
                                         <div class="col-sm-7">
                                             <div class="text-sm-end">
                                                 <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog-outline"></i></button>
+                                                <button type="button" class="btn btn-light mb-2 me-1" data-bs-toggle="modal" data-bs-target="#signup-modal">Imprimir</button>
                                                 <button type="button" class="btn btn-light mb-2">Baixar</button>
                                             </div>
                                         </div><!-- end col-->
@@ -91,9 +129,9 @@
                                                     <th>Nome Completo</th>
                                                     <th>Nº de serie</th>
                                                     <th>Arma em Posse</th>
-                                                    <th style="width: 85px;">Arrecadar</th>
-                                                    <th>Qnt Munições</th>
-                                                    <th>Telefone</th>
+                                                    <th>Data Retirada</th>
+                                                    <th>Data Devolução </th>
+                                                    <th>Ass. Receptor </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -151,6 +189,7 @@
     <script src="resources/views/assets/js/pages/demo.returns.js"></script>
     <!-- end demo js-->
 
+
     <script>
         // Função para verificar a URL e abrir o modal
             window.onload = function() {
@@ -163,6 +202,16 @@
                 }
             }
        </script>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        const selectedValue = document.getElementById('selectedValue').textContent;
+
+        if (selectedValue.trim() !== "") {
+            document.getElementById('selectedDateRange').value = selectedValue;
+        }
+    });
+</script>
 
 
 </body>

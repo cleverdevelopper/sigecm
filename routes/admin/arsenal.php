@@ -237,6 +237,90 @@ use App\Controller\Dashboard\PdfGenaratorController;
     #==========================================
     # FIM DEVOLUCAO DO ARMAMENTO
     #==========================================
+
+
+
+
+    #==========================================
+    # Levantamento e registro
+    #==========================================
+    $objRouter->get('/register-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, ArsenalManagementController::getRegisterWitrhdrawPage($request));
+        }
+    ]);
+
+    # geracao do pdf
+    $objRouter->post('/register-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, PdfGenaratorController::withdrawPDFGenarator($request));
+        }
+    ]);
+
+    $objRouter->get('/new-register-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, ArsenalManagementController::getNewRegisterWithdraw($request));
+        }
+    ]); 
+    $objRouter->post('/new-register-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, ArsenalManagementController::SetNewRegisterWithdraw($request));
+        }
+    ]); 
+
+    #================
+    # Relatorios
+    $objRouter->get('/report-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, ArsenalManagementController::getRegisterWitrhdrawPage($request));
+        }
+    ]); 
+
+    $objRouter->post('/report-withdraw', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, PdfGenaratorController::withdrawPDFGenarator($request));
+        }
+    ]); 
+
+    $objRouter->get('/report-return', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, ArsenalManagementController::getWeaponsReturnReport($request));
+        }
+    ]); 
+
+    $objRouter->post('/report-return', [
+        'middlewares'   => [
+            'requere-admin-login'
+        ],
+        function ($request){
+            return new Response(200, PdfGenaratorController::ReturnPDFGenarator($request));
+        }
+    ]); 
+
+    #==========================================
+    # Fim levantamento e registro
+    #==========================================
     #======================================================
     # Fim Rotas referentes a  ARECADACAO
     #======================================================

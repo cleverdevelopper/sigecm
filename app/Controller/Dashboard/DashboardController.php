@@ -1,7 +1,8 @@
 <?php
     namespace App\Controller\Dashboard;
     use App\Controller\GlobalPageController;
-    use App\Utils\ViewManager;
+use App\Model\Entity\ArrecadacaoRegisterEntity;
+use App\Utils\ViewManager;
     use App\Model\Entity\LoginEntity\UtilizadorPermissoes as EntityUtilizador;
     use App\Model\Entity\EnterManagementEntity;
     use App\Utils\Funcoes;
@@ -35,6 +36,51 @@
         }
         #========================================================
         # Fim Dados para apresentacao no painel de visitantes
+        #========================================================
+
+
+        #========================================================
+        #  Dados para apresentacao no painel de Armamentos
+        #========================================================
+        private static function getWithdrawItemReturnReport(){
+            $itens = '';
+            $results = ArrecadacaoRegisterEntity::getArrecadacao(null, 'codigo_arrecadacao DESC', null);
+            While ($objArrecacao = $results->fetchObject(ArrecadacaoRegisterEntity::class)){ 
+                //Montando os itens a serem retornados
+
+                if($objArrecacao->data_devolucao == NULL){
+                    $itens .= ViewManager::render('dashboard/painelArmamentoItem', [
+                        'codigo'                => $objArrecacao->codigo_arrecadacao,
+                        'nome'                  => $objArrecacao->nome_funcionario,
+                        'tipo'                  => $objArrecacao->tipo_armamento,
+                        'numero'                => $objArrecacao->numero_de_serie_arma,
+                        'municoes'              => $objArrecacao->quantidade_municao,
+                        'patente'               => $objArrecacao->patente_funcionario,
+                        'subunidade'            => $objArrecacao->subunidade,
+                        'data_devolucao'        => $objArrecacao->data_devolucao,
+                        'transacaoa'            => 'Levantamento',
+                        'cor'                   => 'bg-danger-lighten text-danger',
+                    ]);
+                }else{
+                    $itens .= ViewManager::render('dashboard/painelArmamentoItem', [
+                        'codigo'                => $objArrecacao->codigo_arrecadacao,
+                        'nome'                  => $objArrecacao->nome_funcionario,
+                        'tipo'                  => $objArrecacao->tipo_armamento,
+                        'numero'                => $objArrecacao->numero_de_serie_arma,
+                        'municoes'              => $objArrecacao->quantidade_municao,
+                        'patente'               => $objArrecacao->patente_funcionario,
+                        'subunidade'            => $objArrecacao->subunidade,
+                        'data_devolucao'        => $objArrecacao->data_devolucao,
+                        'transacaoa'            => 'Devolução',
+                        'cor'                   => 'bg-success-lighten text-success',
+                    ]); 
+                }
+                
+            }
+            return $itens; 
+        }
+        #========================================================
+        # Fim Dados para apresentacao no painel de Armamento
         #========================================================
         
         //Verificacacao das permissoes
@@ -91,6 +137,10 @@
                     'rightsidebar'  => parent::getRightSidebar(),
                     'footer'        => parent::getFooter(),
                     'utilizadores'  => self::getUtilizadorItens($request),
+                    'resumo'        => self::getWithdrawItemReturnReport(),
+                    'retiradas'     => 10,
+                    'saidas'        => 10,
+                    'report'     => 10,
                 ]);
     
                 return parent::getPage('SIGECM | Painel Incial', $content);

@@ -1,5 +1,5 @@
 
-Deprecated: Creation of dynamic property App\Model\Entity\AmmunitionEntity::$apagado_em is deprecated in C:\laragon\www\sigecm\app\Controller\Dashboard\ArsenalManagementController.php on line 518
+Warning: Undefined property: App\Model\Entity\ArrecadacaoRegisterEntity::$fotografia in C:\laragon\www\sigecm\app\Controller\Dashboard\ArsenalManagementController.php on line 725
 
 Painel Inicial
  Dashboard
@@ -20,6 +20,6 @@ Founder
 Search...
 Search
 SIGECM
-Gestao do Armamento
-Novo Levantamento
-Novo Levantamento
+Gestão do Armamento
+Devolução do Armamento
+Devolução do Armamento

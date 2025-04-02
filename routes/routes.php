@@ -9,6 +9,7 @@
     include __DIR__.'/admin/groups.php';
     include __DIR__.'/admin/enter.php';
     include __DIR__.'/admin/arsenal.php';
+    include __DIR__.'/admin/epi.php';
 
     #===================================================
     #  Rotas relacionadas com API

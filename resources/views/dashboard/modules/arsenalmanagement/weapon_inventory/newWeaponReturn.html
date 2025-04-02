@@ -60,23 +60,18 @@
                                   <div class="card text-center">
                                       <div class="card-body">
                                           <!-- Avatar -->
-                                          <img id="avatar" src="images/Funcionarios/{{fotografia}}" alt="image" class="img-fluid avatar-xl">
+                                          <img id="avatar" src="resources/views/assets/images/users/usermilitary.png" alt="image" class="img-fluid avatar-xl">
                           
                                           <!-- Nome -->
                                           <h4 id="funcionario-nome" class="mb-0 mt-2"><span id="patente" class="ms-2"></span> {{fullname}}</h4>
-                                          <p id="cargo" class="text-muted font-14">{{cargo}}</p>
+                                          <p id="cargo" class="text-muted font-14">{{patente}}</p>
                           
                                           <div class="text-start mt-3">
                                               <h4 class="font-13 text-uppercase">Sobre: </h4>
                                               <p class="text-muted font-13 mb-3">
-                                                  Este(a) e o(a)<strong><span class="ms-2">{{patente}}</span> <span id="full-name" class="ms-2"></span></strong>,
-                            funcionario da Casa Militar afecto no Departamento de<strong><span class="ms-2">{{departamento}}</span></strong> exercendo o a função de<span class="ms-2">{{cargo}}</span>. 
+                                                  Este(a) e o(a)<strong><span class="ms-2">{{patente}}</span> <span id="full-name" class="ms-2">{{fullname}}</span></strong>,
+                            funcionario da Casa Militar afecto no Subunidade de<strong><span class="ms-2">{{subunidade}}</span></strong>. 
                                               </p>
-                                              <p class="text-muted mb-2 font-13"><strong>Nome Completo:</strong><span class="ms-2">{{fullname}}</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Patente:</strong><span  class="ms-2">{{patente}}</span></p>
-                                              <p class="text-muted mb-1 font-13"><strong>Cargo:</strong><span class="ms-2">{{cargo}}</span></p>
-                                              <p class="text-muted mb-1 font-13"><strong>Departamento:</strong> <span class="ms-2">{{departamento}}</span></p>
-                                              <p class="text-muted mb-1 font-13"><strong>Documento:</strong> <span class="ms-2">{{documento}}</span></p>
                                           </div>
                                       </div> <!-- end card-body -->
                                   </div> <!-- end card -->
@@ -182,37 +177,13 @@
                                                         <div class="col-md-12">
                                                             <div class="mb-3">
                                                                 <label for="firstname" class="form-label">Quantidade das munições a devolver</label>
-                                                                <input type="text" class="form-control"  name="text_quantidade_devolucao" data-provide="typeahead" id="prefetch_weapons" placeholder="Digite o numero das municoes a devolver">
+                                                                <input type="text" class="form-control"  name="text_quantidade_devolucao"  placeholder="Digite o numero das municoes a devolver">
                                                                 <span class="form-text text-muted"><small>Digite o numero das municoes a serem devolvidas</small></span>
                                                             </div>
                                                         </div>
                                                     </div> <!-- end row -->
 
                                                     <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-pen me-1"></i> Assinaturas</h5>
-                                                    <div class="row">
-                                                      <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                          <label for="social-fb" class="form-label">Assinatura do Fiador</label>
-                                                          <div>
-                                                            <div id="signatureDivFiador">
-                                                              <img id="signatureImageFiador" src="#" />
-                                                              <input type="file" name="signature_image_fiador" id="signatureFileFiador" accept="image/*" class="form-control" hidden>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                          <label for="social-tw" class="form-label">Dispositivo de assinatura</label>
-                                                          <div class="mb-3">
-                                                            <div>
-                                                              <button type="button" id="signButtonFiador" onClick="tabletDemo('Fiador')" class="btn btn-outline-primary">Assinar</button>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    
                                                     <div class="row mt-4">
                                                       <div class="col-md-6">
                                                         <div class="mb-3">
@@ -236,6 +207,30 @@
                                                         </div>
                                                       </div>
                                                     </div>
+                                                    <div class="row">
+                                                      <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                          <label for="social-fb" class="form-label">Assinatura do Receptor</label>
+                                                          <div>
+                                                            <div id="signatureDivFiador">
+                                                              <img id="signatureImageFiador" src="#" />
+                                                              <input type="file" name="signature_image_fiador" id="signatureFileFiador" accept="image/*" class="form-control" hidden>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                          <label for="social-tw" class="form-label">Dispositivo de assinatura</label>
+                                                          <div class="mb-3">
+                                                            <div>
+                                                              <button type="button" id="signButtonFiador" onClick="tabletDemo('Fiador')" class="btn btn-outline-primary">Assinar</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    
                                                   <div class="text-end">
                                                     <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save"></i> Salvar</button>
                                                 </div>

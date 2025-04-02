@@ -6,9 +6,7 @@
         </div>
     </td>
     <td>
-        <p class="m-0 d-inline-block align-middle font-16">
-            <a href="#" class="text-body">#{{codigo}}</a>
-        </p>
+        #{{codigo}}
     </td>
     <td class="table-user">
         <img src="resources/views/assets/images/users/usermilitary.png" alt="table-user" class="me-2 rounded-circle">
@@ -19,20 +17,22 @@
         </p>
     </td>
     <td>
-       {{numero}}
-    </td>
-    <td>
         {{tipo_armamento}}
     </td>
-    <td class="table-action">
-        <a href="{{URL}}/new-return-weapon&id={{codigo}}" class="btn btn-outline-success"><i class="uil-money-withdrawal"></i> Devolver</a>
-        </td>
+    <td>
+        {{numero}}
+    </td>
     <td>
         {{municoes}}
     </td>
-
-    
     <td>
         {{telefone}}
+    </td>
+    <td>
+        {{data_retirada}}
+    </td>
+    
+    <td>
+        <img src="images/Signatures/{{assinatura}}" alt="" srcset="" style="width: auto; height: 60px;">
     </td>
 </tr>

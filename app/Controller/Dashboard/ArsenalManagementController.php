@@ -5,7 +5,8 @@
     use App\Controller\GlobalPageController;
     use App\Model\Entity\AmmunitionEntity;
     use App\Model\Entity\ArrecadacaoEntity;
-    use App\Model\Entity\EquipamentosQuantEntity;
+use App\Model\Entity\ArrecadacaoRegisterEntity;
+use App\Model\Entity\EquipamentosQuantEntity;
     use App\Model\Entity\EquipmentEntity;
     use App\Model\Entity\StatusArmamentoEntity;
     use App\Model\Entity\WeaponEntity;
@@ -665,6 +666,33 @@ use Dompdf\Options;
         }
 
 
+        
+
+        #============================================================================
+        # fIM Funcoes relacionadas a ARECADACAO
+        #============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #============================================================================
+        # Registar funcionario e Arecadar
+        #============================================================================
+
         // Devolucao do armamento
         private static function getEquipmentItensReturn($request, $id) {
             $itens = '';
@@ -683,9 +711,50 @@ use Dompdf\Options;
             return $itens;
         }
 
+        private static function getWithdrawItemReturnReport(){
+            $itens = '';
+            $results = ArrecadacaoRegisterEntity::getArrecadacao("data_devolucao IS NOT NULL", 'codigo_arrecadacao DESC', null);
+            While ($objArrecacao = $results->fetchObject(ArrecadacaoRegisterEntity::class)){ 
+                //Montando os itens a serem retornados
+                $itens .= ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/weaponReturnItemReport', [
+                    'codigo'                => $objArrecacao->codigo_arrecadacao,
+                    'nome'                  => $objArrecacao->nome_funcionario,
+                    'tipo_armamento'        => $objArrecacao->tipo_armamento,
+                    'numero'                => $objArrecacao->numero_de_serie_arma,
+                    'municoes'              => $objArrecacao->quantidade_municao,
+                    'patente'               => $objArrecacao->patente_funcionario,
+                    'data_retirada'         => $objArrecacao->data_levantamento,
+                    'data_devolucao'        => $objArrecacao->data_devolucao,
+                    'assinatura_devolucao'  => $objArrecacao->assinatura_devolucao,
+                    'assinatura_receptor'   => $objArrecacao->assinatura_fiel
+                ]);
+            }
+            return $itens; 
+        }
+
+          
+        
+        public static function getWeaponsReturnReport($request){
+            if(Funcoes::Permition(10)){
+                $content = ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/weaponReturnReport',[
+                    'navbar'        => parent::getNavbar(),
+                    'sidebar'       => parent::getMenu(),
+                    'rightsidebar'  => parent::getRightSidebar(),
+                    'footer'        => parent::getFooter(),
+                    'withdrawItemReturn'  => self::getWithdrawItemReturnReport(),
+                ]);
+
+                return parent::getPage('SIGECM | Armamento', $content);
+            }else{
+                return ErrorController::getError($request);
+            }
+        }
+
+
+
         public static function getNewWeaponReturn($request, $id){
             if(Funcoes::Permition(10)){
-                $objArrecacao = ArrecadacaoEntity::getArrecadacaoById($id);
+                $objArrecacao = ArrecadacaoRegisterEntity::getArrecadacaoById($id);
 
                 $objStatus = StatusArmamentoEntity::getStatusById($objArrecacao->status_operacional_arma);
 
@@ -694,12 +763,9 @@ use Dompdf\Options;
                     'sidebar'               => parent::getMenu(),
                     'rightsidebar'          => parent::getRightSidebar(),
                     'footer'                => parent::getFooter(),
-                    'fotografia'            => $objArrecacao->fotografia,
                     'fullname'              => $objArrecacao->nome_funcionario,
                     'patente'               => $objArrecacao->patente_funcionario,
-                    'departamento'          => $objArrecacao->departamento,
-                    'cargo'                 => $objArrecacao->cargo,
-                    'documento'             => $objArrecacao->documento_identidade,
+                    'subunidade'            => $objArrecacao->subunidade,
                     'assinatura'            => $objArrecacao->assinatura_arrecadacao,
                     'data_levantamento'     => parent::getFormattedDataOnly($objArrecacao->data_levantamento),
                     'gun_code'              => $objArrecacao->codigo_armamento,
@@ -731,21 +797,24 @@ use Dompdf\Options;
 
 
         public static function SetNewReturn($request, $id){
-            if(Funcoes::Permition(1)){
+            if(Funcoes::Permition(10)){
                 $file_fiador = $request->getFile_fiador();
                 $file_fiel = $request->getFile_fiel();
                 $postVars = $request->getPostVars();
 
+                #===========================================
+                # devolucao
+                #===========================================
+                $objArrecadacao = new ArrecadacaoRegisterEntity;
+                $objArrecadacao->codigo_arrecadacao             = $id;
+                $objArrecadacao->quantidade_municao_devolucao   = $postVars['text_quantidade_devolucao'];
+                $objArrecadacao->data_devolucao                 = parent::getNowDate();
+                $objArrecadacao->assinatura_devolucao           = $file_fiel;
+                $objArrecadacao->assinatura_fiel                = $file_fiador ;
+                $objArrecadacao->atualizado_em                  = parent::getNowDateTime();
 
-
-
-                echo '<pre>';
-                print_r($file_fiador);
-                print_r($file_fiel);
-                print_r($postVars);
-                echo $id;
-                echo '</pre>';
-                exit;
+                $objArrecadacao->actualizar();
+                $request->getRouter()->redirect('/return-weapon?status=updated');
             }else{
                 return ErrorController::getError($request);
             }
@@ -754,13 +823,12 @@ use Dompdf\Options;
 
         private static function getWithdrawItemReturn(){
             $itens = '';
-            $results = ArrecadacaoEntity::getArrecadacao(null, 'codigo_arrecadacao DESC', null);
-            While ($objArrecacao = $results->fetchObject(ArrecadacaoEntity::class)){ 
+            $results = ArrecadacaoRegisterEntity::getArrecadacao("data_devolucao IS NULL", 'codigo_arrecadacao DESC', null);
+            While ($objArrecacao = $results->fetchObject(ArrecadacaoRegisterEntity::class)){ 
                 //Montando os itens a serem retornados
                 $itens .= ViewManager::render('dashboard/modules/arsenalmanagement/weapon_inventory/weaponReturnItem', [
                     'codigo'                => $objArrecacao->codigo_arrecadacao,
                     'nome'                  => $objArrecacao->nome_funcionario,
-                    'imagem'                => $objArrecacao->fotografia,
                     'tipo_armamento'        => $objArrecacao->tipo_armamento,
                     'numero'                => $objArrecacao->numero_de_serie_arma,
                     'municoes'              => $objArrecacao->quantidade_municao,
@@ -789,8 +857,136 @@ use Dompdf\Options;
             }
         }
 
+
         #============================================================================
-        # fIM Funcoes relacionadas a ARECADACAO
+        
+        
+        
+        
+        
+        
+        
+        private static function getRegisterWithdrawItem($request){
+            $itens = '';
+            $results = ArrecadacaoRegisterEntity::getArrecadacao('data_devolucao is NULL', 'codigo_arrecadacao DESC', null);
+            While ($objArrecacao = $results->fetchObject(ArrecadacaoRegisterEntity::class)){ 
+                //Montando os itens a serem retornados
+                $itens .= ViewManager::render('dashboard/modules/arsenalmanagement/registerWithdraw/withdrawItem', [
+                    'codigo'                => $objArrecacao->codigo_arrecadacao,
+                    'nome'                  => $objArrecacao->nome_funcionario,
+                    'tipo_armamento'        => $objArrecacao->tipo_armamento,
+                    'numero'                => $objArrecacao->numero_de_serie_arma,
+                    'municoes'              => $objArrecacao->quantidade_municao,
+                    'patente'               => $objArrecacao->patente_funcionario,
+                    'assinatura'            => $objArrecacao->assinatura_arrecadacao,
+                    'telefone'              => $objArrecacao->celular_funcionario,
+                    'data_retirada'         => $objArrecacao->data_levantamento
+                ]);
+            }
+            return $itens; 
+        }
+
+        public static function getNewRegisterWithdraw($request, $mensagem = ''){
+            if(Funcoes::Permition(10)){
+                $content = ViewManager::render('dashboard/modules/arsenalmanagement/registerWithdraw/newRegisterWithdraw',[
+                    'navbar'                => parent::getNavbar(),
+                    'sidebar'               => parent::getMenu(),
+                    'rightsidebar'          => parent::getRightSidebar(),
+                    'footer'                => parent::getFooter(),
+                    'municaoItem'           => self::getAmmuniationItens($request),
+                    'equipmentItem'         => self::getEquipmentItensWidthdraw($request),
+                    'mensagem'              => $mensagem
+                ]);
+                return parent::getPage('SIGECM | Nova Retirada', $content);
+            }else{
+                return ErrorController::getError($request);
+            }
+        }
+
+        public static function SetNewRegisterWithdraw($request){
+            if(Funcoes::Permition(10)){
+                $file = $request->getFile();
+                $postVars = $request->getPostVars();
+
+                $objArrecadacao = new ArrecadacaoRegisterEntity;
+
+                #========================================
+                # Verificacoes
+                #========================================
+                # Verificacao se numero de serie nao foi atribuida a outro funcionario
+                $where =  "numero_de_serie_arma = ".$postVars['text_numero_serie']." AND data_devolucao is null";
+                $results = ArrecadacaoRegisterEntity::getArrecadacao($where, 'codigo_arrecadacao DESC', null);
+                $objArrecadacaoVerificacao = $results->fetchObject(ArrecadacaoRegisterEntity::class);
+
+                if(!empty($objArrecadacaoVerificacao)){
+                    $request->getRouter()->redirect('/new-withdraw?status=error_serie');
+                }else{
+                    #===========================================
+                    # Funcionario
+                    #===========================================
+                    $objArrecadacao->nome_funcionario               = $postVars['text_nome_completo'];
+                    $objArrecadacao->patente_funcionario            = $postVars['text_patente'];
+                    $objArrecadacao->subunidade                     = $postVars['text_subunidade'];
+                    $objArrecadacao->celular_funcionario            = $postVars['text_contacto_fiel'];
+
+                    #===========================================
+                    # Armamento
+                    #===========================================
+                    $objArrecadacao->codigo_armamento               = $postVars['text_codigo_armamento'];
+                    $objArrecadacao->numero_de_serie_arma           = $postVars['text_numero_serie'];
+                    $objArrecadacao->tipo_armamento                 = $postVars['text_tipo_arma'];
+                    $objArrecadacao->status_operacional_arma        = $postVars['text_estado'];
+                    $objArrecadacao->calibre_municao_arma           = $postVars['text_calibre_municao'];
+                    $objArrecadacao->data_ultima_inspecao_arma      = $postVars['text_data_inspencao'];
+
+                    #===========================================
+                    # Municoes
+                    #===========================================
+                    $objArrecadacao->codigo_municao                 = $postVars['text_municao_retirar'];
+                    $objArrecadacao->quantidade_municao             = $postVars['text_municao_quantidade'];
+
+                    #===========================================
+                    # Municoes
+                    #===========================================
+                    $objArrecadacao->quantidade_carregador          = $postVars['text_carregador_quantidade'];
+                    $objArrecadacao->quantidade_cartucheira         = $postVars['text_cartucheira_quantidade'];
+
+                    #===========================================
+                    # Assinaturas
+                    #===========================================
+                    $objArrecadacao->assinatura_arrecadacao         = $file;
+                    $objArrecadacao->data_levantamento              = parent::getNowDate();
+                    $objArrecadacao->criado_em                      = parent::getNowDateTime();
+                    $objArrecadacao->atualizado_em                  = parent::getNowDateTime();
+
+                    $objArrecadacao->cadastrar();
+                    $request->getRouter()->redirect('/register-withdraw?status=created');
+
+                
+                }
+            }else{
+                return ErrorController::getError($request);
+            }
+        }
+        
+        public static function getRegisterWitrhdrawPage($request){
+            if(Funcoes::Permition(10)){
+                $content = ViewManager::render('dashboard/modules/arsenalmanagement/registerWithdraw/withdrawRegister',[
+                    'navbar'        => parent::getNavbar(),
+                    'sidebar'       => parent::getMenu(),
+                    'rightsidebar'  => parent::getRightSidebar(),
+                    'footer'        => parent::getFooter(),
+                    'withdrawItem'  => self::getRegisterWithdrawItem($request),
+                ]);
+
+                return parent::getPage('SIGECM | Armamento', $content);
+            }else{
+                return ErrorController::getError($request);
+            }
+        }
         #============================================================================
+        # Fim Registar funcionario e Arecadar
+        #============================================================================
+
     }
 ?>
